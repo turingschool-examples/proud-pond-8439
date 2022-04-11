@@ -1,0 +1,3 @@
+class Rides < ApplicationController
+
+end
