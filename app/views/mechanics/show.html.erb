@@ -6,11 +6,12 @@
 
 <h3>Open Rides Currently Working On:</h3><br>
 
-<section id="rides">
 
-<% @mechanic.open_rides.each do |ride| %>
+<% @mechanic.open_rides_desc.each do |ride| %>
+<section id="rides-<%= ride.id %>">
 
-
-<% end  %>
+  Name: <%= ride.name %> <br>
+  Thrill Rating: <%= ride.thrill_rating %> <br><br>
 
 </section>
+<% end  %>

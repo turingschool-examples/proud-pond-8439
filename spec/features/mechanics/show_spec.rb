@@ -45,15 +45,29 @@ RSpec.describe "Mechanic Show Page" do
     it 'i see a mechanics attributes, names of rides they are working on (only if they are open), ordered by thrill rating' do
 
       visit "/mechanics/#{@skeeter.id}"
-      save_and_open_page
+      # save_and_open_page
       expect(page).to have_content("Name: skeeter")
       expect(page).to have_content("Experience: 4")
 
-      within "#rides" do
-        expect(page).to_not have_content("#{@twister.name}")
-        expect("Tea Cups").to appear_before("Hurler")
-        expect("Hurler").to appear_before("Scrambler")
+      within "#rides-#{@cups.id}" do
+        expect(page).to_not have_content("#{@scrambler.name}")
+        expect(page).to have_content("Name: Tee Cups")
+        expect(page).to have_content("Thrill Rating: 9")
       end
+
+      within "#rides-#{@hurler.id}" do
+        expect(page).to_not have_content("#{@cups.name}")
+        expect(page).to have_content("Name: The Hurler")
+        expect(page).to have_content("Thrill Rating: 7")
+      end
+
+      within "#rides-#{@scrambler.id}" do
+        expect(page).to_not have_content("#{@twister.name}")
+        expect(page).to have_content("Name: The Scrambler")
+        expect(page).to have_content("Thrill Rating: 4")
+      end
+
+      expect(page).to_not have_content("Mister Twister")
 
     end
 
