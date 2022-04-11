@@ -11,6 +11,7 @@ require 'rails_helper'
 RSpec.describe 'the merchant show page' do
   before :each do
     @will = Mechanic.create!(name: 'Will', years_experience: 7)
+    # @twister = @will.rides.create!(name: 'Twister', thrill_rating: 6, open:true)
   end
 
   it "can display the mechant show page" do
@@ -31,8 +32,16 @@ RSpec.describe 'the merchant show page' do
     expect(page).to have_content('Rides Currently Working On:')
   end
 
-  it 'lists the rides in desc order most thrills first' do
+  xit 'lists the rides in desc order most thrills first' do
     visit "/mechanics/#{@will.id}"
   end
 
+  it 'has a form to add a ride to workload'
+
+  it 'allows you to give the id of an existing ride to add'
+
+  it 'takes you back to the mechanic show page after hitting submit'
+
+  it 'displays the newly added ride'
+  
 end
