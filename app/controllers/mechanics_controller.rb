@@ -6,7 +6,7 @@ class MechanicsController < ApplicationController
 
   def show
     @mechanic = Mechanic.find(params[:id])
-    @rides = @mechanic.rides.descending_thrill.where(open: :true)
+    @rides = @mechanic.rides.descending_thrill_and_open
   end
 
   def update

@@ -14,8 +14,8 @@ RSpec.describe Ride do
       ride_3 = park.rides.create!(name: "The DOOM Tower", thrill_rating: 8, open: false)
       ride_4 = park.rides.create!(name: "Dizzy Dishes", thrill_rating: 4, open: true)
 
-      expect(Ride.descending_thrill.first).to eq(ride_3)
-      expect(Ride.descending_thrill.last).to eq(ride_1)
+      expect(Ride.descending_thrill_and_open.first).to eq(ride_2)
+      expect(Ride.descending_thrill_and_open.last).to eq(ride_1)
 
     end
   end
