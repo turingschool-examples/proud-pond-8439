@@ -10,8 +10,11 @@ require 'rails_helper'
 
 RSpec.describe 'the merchant index page' do
   before :each do
-    
+    @will = Mechanic.create!(name: 'Will', years_experience: 7)
+    @jacob = Mechanic.create!(name: 'Jacob', years_experience: 2)
+    @jim = Mechanic.create!(name: 'Jim', years_experience: 4)
   end
+
   it 'has the header of the mechanics page' do
     visit '/mechanics'
 
@@ -21,8 +24,18 @@ RSpec.describe 'the merchant index page' do
       expect(page).to_not have_content('Jim')
       expect(page).to_not have_content('Jacob')
     end
+  end
 
-  it 'lists all mechanic names'
+  it 'lists all mechanic names' do
+    visit '/mechanics'
+
+    within '#index' do
+      expect(page).to have_content('Will')
+      expect(page).to have_content('Jim')
+      expect(page).to have_content('Jacob')
+      expect(page).to_not have_content('All Mechanics')
+    end
+  end
 
   it 'lists all mechanics years of experience'
 
