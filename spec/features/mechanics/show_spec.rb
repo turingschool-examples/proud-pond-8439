@@ -78,11 +78,13 @@ RSpec.describe "Mechanic Show Page" do
 
       expect(page).to have_content("Add Ride to Workload:")
 
-      fill_in "Ride ID Number", with: "#{@cups.id}"
+
+
+      fill_in "Ride id number", with: "#{@cups.id}"
       click_on "Submit"
 
       expect(current_path).to eq("/mechanics/#{@chad.id}")
-      
+
       within "#rides-#{@cups.id}" do
         expect(page).to_not have_content("#{@eraser.name}")
         expect(page).to have_content("Name: Tee Cups")
