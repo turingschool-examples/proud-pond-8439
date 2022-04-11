@@ -2,8 +2,9 @@ require 'rails_helper'
 
 describe 'Merchants index' , type: :feature do
   before do
-    @sherman = Mechanic.create!(name: 'Sherman', years_of_experience: 3)
-    @scott = Mechanic.create!(name: 'Scott', years_of_experience: 16)
+    @mechanic1 = Mechanic.create!(name: 'Sherman', years_of_experience: 3)
+    @mechanic3 = Mechanic.create!(name: 'Scott', years_of_experience: 16)
+    @mechanic2 = Mechanic.create!(name: 'Susan', years_of_experience: 6)
 
     @six_flags = AmusementPark.create!(name: 'Six Flags', admission_cost: 75)
     @universal = AmusementPark.create!(name: 'Universal Studios', admission_cost: 80)
@@ -20,6 +21,24 @@ describe 'Merchants index' , type: :feature do
   describe 'display' do
     it "has a header 'All Mechanics'" do
       expect(page).to have_content("All Mechanics")
+    end
+
+    it 'lists all mechanics and their years of expereince' do
+      save_and_open_page
+      within "#mechanic-#{@mechanic2.id}" do
+        expect(page).to have_content(@mechanic2.name)
+        expect(page).to have_content(@mechanic2.years_of_experience)
+      end
+
+      within "#mechanic-#{@mechanic1.id}" do
+        expect(page).to have_content(@mechanic1.name)
+        expect(page).to have_content(@mechanic1.years_of_experience)
+      end
+
+      within "#mechanic-#{@mechanic3.id}" do
+        expect(page).to have_content(@mechanic3.name)
+        expect(page).to have_content(@mechanic3.years_of_experience)
+      end
     end
   end
 end
