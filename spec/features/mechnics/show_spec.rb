@@ -34,4 +34,20 @@ RSpec.describe 'mechanics show' do
 
     expect("The Scrambler").to appear_before("The Hurler")
   end
+
+  it 'has a form to add a new ride' do
+    six_flags = AmusementPark.create!(name: 'Six Flags', admission_cost: 75)
+    jaws = six_flags.rides.create!(name: 'Jaws', thrill_rating: 5, open: true)
+
+    visit "/mechanics/#{@mechanic_1.id}"
+
+    expect(page).to have_no_content("Jaws")
+
+    fill_in "Ride ID", with: "#{jaws.id}"
+    click_on "Submit"
+
+    expect(current_path).to eq("/mechanics/#{@mechanic_1.id}")
+    expect(page).to have_content("Jaws")
+  end
+
 end
