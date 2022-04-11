@@ -8,10 +8,12 @@ RSpec.describe 'Mechanics Show page' do
     @hurler = @six_flags.rides.create!(name: 'The Hurler', thrill_rating: 7, open: true)
     @scram = @six_flags.rides.create!(name: 'The Scrambler', thrill_rating: 4, open: true)
     @ferris = @six_flags.rides.create!(name: 'Ferris Wheel', thrill_rating: 7, open: false)
+    @water = @six_flags.rides.create!(name: 'Thunder River', thrill_rating: 5, open: true)
 
     MechanicRide.create!(mechanic:@john, ride:@hurler)
     MechanicRide.create!(mechanic:@john, ride:@scram)
     MechanicRide.create!(mechanic:@john, ride:@ferris)
+    MechanicRide.create!(mechanic:@john, ride:@water)
 
     visit "/mechanics/#{@john.id}"
   end
