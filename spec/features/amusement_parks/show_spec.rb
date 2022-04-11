@@ -20,7 +20,7 @@ RSpec.describe "amusement park show page" do
     @ride_mech_4 = RideMechanic.create!(ride_id: @ride_4.id, mechanic_id: @mech_2.id)
     @ride_mech_5 = RideMechanic.create!(ride_id: @ride_5.id, mechanic_id: @mech_2.id)
     
-    visit "/parks/#{park_1.id}"
+    visit "/parks/#{@park_1.id}"
   end
 
   it "has the name and price of admission" do
