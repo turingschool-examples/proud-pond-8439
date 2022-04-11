@@ -40,8 +40,6 @@ RSpec.describe 'Mechanic Show Page', type: :feature do
       click_button('Submit')
 
       expect(current_path).to eq("/mechanics/#{mechanic.id}")
-      save_and_open_page
-
       expect('Hamster Wheel').to appear_before('Animals')
     end
   end
