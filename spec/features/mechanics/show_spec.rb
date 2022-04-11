@@ -17,28 +17,7 @@ RSpec.describe 'mechanics show page', type: :feature do
     expect(page).to have_content("Water Slide")
     expect(page).to_not have_content("Bungee")
   end
-  #
-  # Story 3 - Add a Ride to a Mechanic
-  #
-  # As a user,
-  # When I go to a mechanics show page
-  # I see a form to add a ride to their workload
-  # When I fill in that field with an id of an existing ride and hit submit
-  # I’m taken back to that mechanic's show page
-  # And I see the name of that newly added ride on this mechanics show page
-  #
-  # Ex:
-  # Mechanic: Kara Smith
-  # Years of Experience: 11
-  #
-  # Current rides they’re working on:
-  # The Frog Hopper
-  # Fahrenheit
-  # The Kiss Raise
-  #
-  # Add a ride to workload:
-  # Ride Id: _pretend_this_is_a_textfield_
-  # Submit
+
   it 'allows the user to add a ride to a mechanic' do
     john = Mechanic.create!(name: 'John', years_experience: 5)
     six_flags = AmusementPark.create!(name: 'Six Flags', admission_cost: 75)
