@@ -22,21 +22,21 @@ RSpec.describe "Amusement Parks show" do
 
   it "displays AP name and admissions cost" do
     visit "/amusement_parks/#{@six_flags.id}"
-
+    # save_and_open_page
     expect(page).to have_content("Park Name: Six Flags")
-    expect(page).to have_content("Cost of Admission: 75")
+    expect(page).to have_content("Cost of Admission: $75.00")
   end
 
   it "displays all ride names in alphabetical order" do
     visit "/amusement_parks/#{@six_flags.id}"
-    save_and_open_page
+    # save_and_open_page
     expect("Ferris Wheel").to appear_before("The Hurler")
     expect("The Hurler").to appear_before("The Scrambler")
   end
 
   it "displays average thrill rating of rides" do
     visit "/amusement_parks/#{@six_flags.id}"
-    save_and_open_page
-    expect(page).to have_content("Average Thrill Rating of Rides: 6")
+    # save_and_open_page
+    expect(page).to have_content("Average Thrill Rating of Rides: 6.0/10")
   end
 end
