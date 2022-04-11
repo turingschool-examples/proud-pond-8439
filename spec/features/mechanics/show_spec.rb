@@ -50,15 +50,16 @@ RSpec.describe 'Mechanic Show Page', type: :feature do
   end
 
   it 'allows a user to add a ride to a mechanic' do
-    brendan = Mechanic.create(name: "Brendan", years_experience: 3)
-    visit "mechanics/#{brendan.id}"
+    visit "mechanics/#{@adam.id}"
 
-    fill_in :ride_id, with: @hurler.id
+    jaws = @six_flags.rides.create!(name: "Jaws", thrill_rating: 8, open: true)
+
+    fill_in :ride_id, with: jaws.id
     click_on :submit
 
-    expect(current_path).to eq("mechanics/#{brendan.id}")
+    expect(current_path).to eq("/mechanics/#{@adam.id}")
 
-    within("mechanic-rides") do
+    within("#mechanic-rides") do
       expect(page).to have_content(@hurler.name)
       expect(page).to have_content(@hurler.thrill_rating)
     end
