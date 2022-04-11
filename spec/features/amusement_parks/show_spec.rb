@@ -23,4 +23,15 @@ RSpec.describe 'amusement park show page' do
     expect(page).not_to have_content(@park2.name)
     expect(page).not_to have_content(@park2.admission_cost)
   end
+
+  it 'lists the rides in alphabetical order' do
+    visit "/amusement_parks/#{@park.id}"
+
+    expect(@ride4.name).to appear_before(@ride5.name)
+    expect(@ride5.name).to appear_before(@ride1.name)
+    expect(@ride1.name).to appear_before(@ride6.name)
+    expect(@ride6.name).to appear_before(@ride2.name)
+    expect(@ride2.name).to appear_before(@ride3.name)
+    expect(page).not_to have_content(@ride6.name)
+  end
 end
