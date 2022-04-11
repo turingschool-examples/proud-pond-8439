@@ -5,4 +5,8 @@ class AmusementPark < ApplicationRecord
   def all_park_rides
     rides.order(name: :asc)
   end
+
+  def avg_thrill_rating
+    rides.average(:thrill_rating)
+  end
 end

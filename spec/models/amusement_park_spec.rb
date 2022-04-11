@@ -22,7 +22,7 @@ RSpec.describe AmusementPark do
     end
 
     it "finds average thrill rating of all rides" do
-      expect(@six_flags.avg_thrill_rating).to eq(6)
+      expect(@six_flags.avg_thrill_rating.to_i).to eq(6)
     end
   end
 end
