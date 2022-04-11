@@ -7,14 +7,14 @@ RSpec.describe Mechanic do
   end
 
   before :each do
-    @mechanic_1 = Mechanic.create!(name:'Billy Johnson', years_experience: 8)
-    @mechanic_2 = Mechanic.create!(name:'Sam Jones', years_experience: 5)
-    @mechanic_3 = Mechanic.create!(name:'Francine Halls', years_experience: 10)
+    @mechanic_1 = Mechanic.create!(name:'Billy Johnson', years_experience: 26)
+    @mechanic_2 = Mechanic.create!(name:'Sam Jones', years_experience: 25)
+    @mechanic_3 = Mechanic.create!(name:'Francine Halls', years_experience: 15)
   end
 
   describe 'class methods' do
     it '#average_exp' do
-      expect(Mechanic.average_exp).to eq(7.67)
+      expect(Mechanic.average_exp).to eq(22)
     end
   end
 end
