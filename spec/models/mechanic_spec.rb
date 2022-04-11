@@ -30,7 +30,7 @@ RSpec.describe Mechanic do
 
   describe 'instance methods' do
     it '.open_rides' do
-      expect(@mechanic_1.open_rides).to eq([@ride_1, @ride_3])
+      expect(@mechanic_1.open_rides).to eq([@ride_3, @ride_1])
     end
   end
 end
