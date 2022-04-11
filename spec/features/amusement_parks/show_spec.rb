@@ -32,6 +32,13 @@ RSpec.describe 'amusement park show page' do
     expect(@ride1.name).to appear_before(@ride6.name)
     expect(@ride6.name).to appear_before(@ride2.name)
     expect(@ride2.name).to appear_before(@ride3.name)
-    expect(page).not_to have_content(@ride6.name)
+    expect(page).not_to have_content(@ride7.name)
+  end
+
+  it 'lists the average thrill rating of the parks rides' do
+    visit "/amusement_parks/#{@park.id}"
+
+    expect(page).to have_content("Average Thrill Rating: 7.3")
+    expect(page).not_to have_content("Average Thrill Rating: 7.3333")
   end
 end
