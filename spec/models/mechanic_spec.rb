@@ -32,8 +32,8 @@ RSpec.describe Mechanic do
       MechanicRide.create!(ride_id: @ride2.id, mechanic_id: @mechanic1.id)
       MechanicRide.create!(ride_id: @ride3.id, mechanic_id: @mechanic1.id)
     end
-    xit '#best_thrill_rating' do
-      expect(@mechanic1.best_thrill_rating).to eq([@ride2, @ride1, @ride3])
+    it '#best_thrill_rating' do
+      expect(@mechanic1.best_thrill_rating).to eq([@ride2, @ride1])
     end
   end
 end

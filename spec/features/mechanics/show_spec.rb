@@ -16,15 +16,14 @@ RSpec.describe "mechanics show page" do
     MechanicRide.create!(ride_id: @ride2.id, mechanic_id: @mechanic1.id)
     MechanicRide.create!(ride_id: @ride3.id, mechanic_id: @mechanic1.id)
 
-    visit "mechanic/#{@mechanic1.id}"
+    visit "mechanics/#{@mechanic1.id}"
   end
   describe "User story 2" do
-    xit "has header" do
+    it "has header" do
       expect(page).to have_content("#{@mechanic1.name}")
     end
-    xit "shows mechanic attributes" do
+    it "shows mechanic attributes" do
       within("#mechanic") do
-        expect(page).to have_content("#{@mechanic1.name}")
         expect(page).to have_content("#{@mechanic1.years_experience}")
         expect(page).to_not have_content("#{@mechanic2.name}")
         expect(page).to_not have_content("#{@mechanic2.years_experience}")
@@ -33,8 +32,9 @@ RSpec.describe "mechanics show page" do
         expect(page).to have_content("#{@ride3.name}")
       end
     end
-    xit "shows open rides in thrill rating order" do
+    it "shows open rides in thrill rating order" do
       within("#open-rides") do
+        save_and_open_page
         expect(page).to have_content("#{@ride1.name}")
         expect(page).to have_content("#{@ride2.name}")
         expect(page).to_not have_content("#{@ride3.name}")
