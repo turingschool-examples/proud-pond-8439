@@ -50,9 +50,9 @@ We are creating an application to track the maintenance of amusement park rides 
   * ex. name: ‘Kara Smith’, years_experience: 11
 * Rides have a name, thrill rating, and open (boolean) attributes
   * ex. name: ‘The Hurler’, thrill_rating: 7, open: false
-* AmusementParks have many Rides
-* Rides belong to an AmusementPark
-* Mechanics can work on many Rides
+* AmusementParks have many Rides x
+* Rides belong to an AmusementPark x
+* Mechanics can work on many Rides 
 * Rides can have many Mechanics working on them
 
 Some of the initial migrations and model set up has been done for you.
