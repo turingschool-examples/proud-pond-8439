@@ -15,7 +15,7 @@ describe 'Merchants index' , type: :feature do
 
     @jaws = @universal.rides.create!(name: 'Jaws', thrill_rating: 5, open: true)
 
-    visit '/mechanics'
+    visit mechanics_path
   end
 
   describe 'display' do
@@ -41,7 +41,6 @@ describe 'Merchants index' , type: :feature do
     end
 
     it 'shows average expereince of all mechanics' do
-      save_and_open_page
       expect(page).to have_content("Average Experience of All Mechanics: 8.33")
     end
   end
