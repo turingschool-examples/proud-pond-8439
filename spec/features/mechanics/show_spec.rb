@@ -44,6 +44,34 @@ RSpec.describe 'mechanics show page' do
 
         expect(ride_2.name).to appear_before(ride_1.name)
       end
+
+      it 'i see a form to add a ride to their workload' do
+        mechanic_1 = Mechanic.create!(name: "James", years_experience: 20)
+
+        visit "/mechanics/#{mechanic_1.id}"
+
+        expect(page).to have_content("Add a ride to workload:")
+      end
+
+      it 'when i fill in that field with an id of an existing ride and hit submit,
+          i am taken back to the mechanic show page and i see the name of the new
+          ride on the mechanic show page' do
+        amusement_park = AmusementPark.create!(name: 'Hershey Park', admission_cost: 50)
+        mechanic_1 = Mechanic.create!(name: "James", years_experience: 20)
+        ride_1 = mechanic_1.rides.create!(name: "The Great Bear", thrill_rating: 8, open: true, amusement_park_id: amusement_park.id)
+        ride_2 = mechanic_1.rides.create!(name: "Farenheit", thrill_rating: 9, open: true, amusement_park_id: amusement_park.id)
+        ride_3 = Ride.create!(name: "Storm Runner", thrill_rating: 10, open: true, amusement_park_id: amusement_park.id)
+
+        visit "/mechanics/#{mechanic_1.id}"
+
+        expect(page).not_to have_content(ride_3.name)
+
+        fill_in "Add a ride to workload:", with: "#{ride_3.id}"
+
+        expect(current_path).to eq("/mechanics/#{mechanic_1.id}")
+
+        expect(page).to have_content(ride_3.name)
+      end
     end
   end
 end
