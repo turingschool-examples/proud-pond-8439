@@ -13,7 +13,7 @@ RSpec.describe 'the mechanic index page' do
 
   visit "/mechanics"
 
-  within("#mechanic_attributes-") do
+    expect(page).to have_content("All Mechanics")
     expect(page).to have_content(mechanic1.name)
     expect(page).to have_content(mechanic1.years_experience)
     expect(page).to have_content(mechanic2.name)
@@ -22,6 +22,7 @@ RSpec.describe 'the mechanic index page' do
     expect(page).to have_content(mechanic3.years_experience)
     expect(page).to have_content(mechanic4.name)
     expect(page).to have_content(mechanic4.years_experience)
-    end
-  end 
+    expect(page).to have_content("136.75")
+  end
+
 end
