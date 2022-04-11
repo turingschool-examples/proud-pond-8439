@@ -29,5 +29,12 @@ RSpec.describe "Amusement Park show page" do
         expect("The Hurler").to appear_before("The Scrambler")
       end
     end
+
+    it "displays the average thrill rating" do
+      visit "/amusement_parks/#{@six_flags.id}"
+
+      expect(page).to have_content("Average Thrill Rating of Rides")
+      expect(page).to have_content("5.0")
+    end
   end
 end

@@ -25,5 +25,16 @@ RSpec.describe Ride do
 
       expect(Ride.order_by_name).to eq([@carousel, @hurler, @scrambler])
     end
+
+    it "can find the average thrill rating" do
+      @six_flags = AmusementPark.create!(name: 'Six Flags', admission_cost: 75)
+
+      @scrambler = @six_flags.rides.create!(name: 'The Scrambler', thrill_rating: 4, open: true)
+      @carousel = @six_flags.rides.create!(name: 'Carousel', thrill_rating: 1, open: true)
+      @hurler = @six_flags.rides.create!(name: 'The Hurler', thrill_rating: 7, open: true)
+
+      expect(Ride.average_thrill).to eq(4)
+
+    end
   end
 end
