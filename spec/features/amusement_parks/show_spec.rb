@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "Amusement Parks show" do
   before :each do
     @six_flags = AmusementPark.create!(name: 'Six Flags', admission_cost: 75)
-    @universal = AmusementPark.screate!(name: 'Universal Studios', admission_cost: 80)
+    @universal = AmusementPark.create!(name: 'Universal Studios', admission_cost: 80)
 
     @hurler = @six_flags.rides.create!(name: 'The Hurler', thrill_rating: 4, open: true)
     @scrambler = @six_flags.rides.create!(name: 'The Scrambler', thrill_rating: 7, open: true)
@@ -22,5 +22,8 @@ RSpec.describe "Amusement Parks show" do
 
   it "displays AP name and admissions cost" do
     visit "/amusement_parks/#{@six_flags.id}"
+
+    expect(page).to have_content("Park Name: Six Flags")
+    expect(page).to have_content("Cost of Admission: 75")
   end
 end
