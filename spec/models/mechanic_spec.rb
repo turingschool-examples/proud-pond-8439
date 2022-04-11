@@ -11,10 +11,14 @@ RSpec.describe Mechanic do
 
     @jaws = @universal.rides.create!(name: 'Jaws', thrill_rating: 5, open: true)
 
-    @mech_1 = @hurler.mechanics.create!(name: "Billy Bighammer", years_experience: 50)
-    @mech_2 = @hurler.mechanics.create!(name: "Linda Licehead", years_experience: 8)
-    @mech_3 = @scrambler.mechanics.create!(name: "Rhonda Roundhouse", years_experience: 19)
+    @mech_1 = Mechanic.create!(name: "Billy Bighammer", years_experience: 50)
+    @mech_2 = Mechanic.create!(name: "Linda Licehead", years_experience: 8)
+    @mech_3 = Mechanic.create!(name: "Rhonda Roundhouse", years_experience: 19)
+
+    @hurler.mechanics << @mech_1
+    @scrambler.mechanics << @mech_1
   end
+
   describe "relationships" do
     it {should have_many(:mechanic_rides)}
     it {should have_many(:rides)}
@@ -23,6 +27,12 @@ RSpec.describe Mechanic do
   describe "class methods" do
     it "finds average age of all mechanics" do
       expect(Mechanic.avg_years_experience.round(1).to_f).to eq(25.7)
+    end
+  end
+
+  describe "instance methods" do
+    it "finds all rides a mechanic is working on" do
+      expect(Mechanic.rides).to eq(25.7)
     end
   end
 
