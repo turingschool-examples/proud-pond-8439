@@ -16,13 +16,13 @@ RSpec.describe 'mechanic index page' do
 
 
   it "has a header" do
-    visit "/mechanics/index"
+    visit "/mechanics/"
 
     expect(page).to have_content("All Mechanics")
   end
 
   it "lists all mechanics attributes" do
-    visit "/mechanics/index"
+    visit "/mechanics/"
 
     expect(page).to have_content(@mech1.name)
     expect(page).to have_content(@mech2.name)
@@ -38,7 +38,7 @@ RSpec.describe 'mechanic index page' do
   end
 
   it "averages all the years of experience for the mechanics" do
-    visit "/mechanics/index"
+    visit "/mechanics/"
 
     expect(page).to have_content("Average years of experience for all mechanics: 15")
   end
