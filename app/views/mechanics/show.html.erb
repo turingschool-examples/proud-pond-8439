@@ -1,0 +1,21 @@
+<div id="mechanic-info">
+  <h1><%= @mechanic.name %></h1>
+  <h2>Years experience: <%= @mechanic.years_experience%></h2>
+</div>
+<h2> Current Rides: </h2>
+<div id="mechanic-rides">
+  <% @mechanic.open_rides_by_thrill.each do |ride| %>
+    <div id="ride-<%= ride.id %>">
+      <h3><%= ride.name %></h3>
+      <h4>Thrill Rating: <%= ride.thrill_rating %></h4>
+    </div>
+  <% end %>
+</div>
+<div id="ride-form">
+  <%= form_with url: '/mechanics_rides/new', local: true do |f| %>
+    <%= f.label "Ride id:" %>
+    <%= f.text_field :ride_id %>
+    <%= f.hidden_field :mechanic_id, value: @mechanic.id %>
+    <%= f.submit :submit %>
+  <% end %>
+</div>
