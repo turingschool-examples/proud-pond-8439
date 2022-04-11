@@ -8,11 +8,11 @@ RSpec.describe 'amusement_parks show page' do
         @ride_1 = @amusement_park.rides.create!(name: "The Great Bear", thrill_rating: 9, open: true)
         @ride_2 = @amusement_park.rides.create!(name: "Farenheit", thrill_rating: 9, open: true)
         @ride_3 = @amusement_park.rides.create!(name: "Storm Runner", thrill_rating: 10, open: true)
+
+        visit "/amusement_parks/#{@amusement_park.id}"
       end
 
       it 'i see the name and price of admission for that park' do
-        visit "/amusement_parks/#{@amusement_park.id}"
-
         expect(page).to have_content(@amusement_park.name)
         expect(page).to have_content("Admission Price: $50.00")
       end
