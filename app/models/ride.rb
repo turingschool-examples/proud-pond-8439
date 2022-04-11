@@ -4,6 +4,6 @@ class Ride < ApplicationRecord
   has_many :mechanics, through: :ride_mechanics
 
   def self.average_thrill_rating
-    average(:thrill_rating).round(1)
+    average(:thrill_rating).to_f
   end
 end
