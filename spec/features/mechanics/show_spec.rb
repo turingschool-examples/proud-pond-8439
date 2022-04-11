@@ -30,7 +30,10 @@ RSpec.describe 'Mechanic Show Page', type: :feature do
 
     within("#mechanic-rides") do
       expect(page).to have_content(@scrambler.name)
+      expect(page).to have_content(@scrambler.thrill_rating)
       expect(page).to have_content(@hurler.name)
+      expect(page).to have_content(@hurler.name)
+      expect(page).not_to have_content(@ferris_wheel.name)
     end
   end
 
@@ -43,6 +46,26 @@ RSpec.describe 'Mechanic Show Page', type: :feature do
 
     within("#mechanic-rides") do
       expect(high_thrill).to appear_before(low_thrill)
+    end
+  end
+
+  it 'allows a user to add a ride to a mechanic' do
+    brendan = Mechanic.create(name: "Brendan", years_experience: 3)
+    visit "mechanics/#{brendan.id}"
+
+    within("#ride-form") do
+      expect(page).to have_content("Ride ID")
+      expect(page).to have_button("Submit")
+    end
+
+    fill_in :ride_id, with: @hurler.id
+    click_on "Submit"
+
+    expect(current_path).to eq("mechanics/#{brendan.id}")
+
+    within("mechanic-rides") do
+      expect(page).to have_content(@hurler.name)
+      expect(page).to have_content(@hurler.thrill_rating)
     end
   end
 end
