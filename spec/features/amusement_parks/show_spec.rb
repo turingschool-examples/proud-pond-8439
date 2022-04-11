@@ -44,4 +44,13 @@ describe 'Mechanics show page' do
     expect(page).to have_content("Lincoln Log Land")
     expect(page).to have_content("Admission: $658")
   end
+
+  it 'displays rides in the amusement park' do
+    expect(page).to have_content("Actual Log Cabin")
+    expect(page).to have_content("Space Log Roller Coaster")
+    expect(page).to have_content("Lincoln Log Slide")
+
+    expect(page).not_to have_content("Glove Ferris Wheel")
+    expect(page).not_to have_content("Glovinator")
+  end
 end
