@@ -15,14 +15,16 @@ describe 'Merchants Show Page' , type: :feature do
 
     @jaws = @universal.rides.create!(name: 'Jaws', thrill_rating: 5, open: true)
 
+    @mechanic_ride_1 = MechanicsRide.create!(mechanic_id: @mechanic2.id, ride_id: @scrambler.id)
+    @mechanic_ride_2 = MechanicsRide.create!(mechanic_id: @mechanic2.id, ride_id: @hurler.id)
+    @mechanic_ride_3 = MechanicsRide.create!(mechanic_id: @mechanic2.id, ride_id: @ferris_wheel.id)
+
+    visit "/mechanics/#{@mechanic2.id}"
   end
 
   describe 'display' do
     it 'shows all attributes' do
-      visit "/mechanics/#{@mechanic2.id}"
-
       within "#mechanic-#{@mechanic2.id}" do
-        save_and_open_page
         expect(page).to have_content(@mechanic2.name)
         expect(page).to have_content(@mechanic2.years_of_experience)
         expect(page).to_not have_content(@mechanic3.name)
@@ -33,6 +35,17 @@ describe 'Merchants Show Page' , type: :feature do
         expect(page).to have_content(@mechanic3.name)
         expect(page).to have_content(@mechanic3.years_of_experience)
         expect(page).to_not have_content(@mechanic1.name)
+      end
+    end
+
+    it 'dispalys all rides a mechanic is working on and is open' do
+      within "#mechanic-rides" do
+        save_and_open_page
+        expect(page).to have_content(@scrambler.name)
+        expect(page).to have_content(@scrambler.thrill_rating)
+        expect(page).to have_content(@hurler.name)
+        expect(page).to have_content(@hurler.name)
+        expect(page).not_to have_content(@ferris_wheel.name)
       end
     end
   end
