@@ -73,4 +73,10 @@ describe 'Mechanics show page' do
       expect("Lincoln Log Slide").to appear_before("Actual Log Cabin")
     end
   end
+
+  it 'has a form to add new rides to the mechanincs workload' do
+    within('#work_form') do
+      expect(page).to have_field("Ride ID")
+    end
+  end
 end
