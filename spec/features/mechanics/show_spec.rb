@@ -53,13 +53,8 @@ RSpec.describe 'Mechanic Show Page', type: :feature do
     brendan = Mechanic.create(name: "Brendan", years_experience: 3)
     visit "mechanics/#{brendan.id}"
 
-    within("#ride-form") do
-      expect(page).to have_content("Ride ID")
-      expect(page).to have_button("Submit")
-    end
-
     fill_in :ride_id, with: @hurler.id
-    click_on "Submit"
+    click_on :submit
 
     expect(current_path).to eq("mechanics/#{brendan.id}")
 
