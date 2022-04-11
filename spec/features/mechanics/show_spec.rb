@@ -23,6 +23,7 @@ RSpec.describe 'mechanics show page', type: :feature do
     expect(page).to have_content("Coaster")
     expect(page).to have_content("Tower")
     expect(page).to have_content("Water Slide")
+    save_and_open_page
     expect(page).to_not have_content("Bungee")
   end
 
