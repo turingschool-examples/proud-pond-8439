@@ -1,2 +1,9 @@
 <h2>Park Name: <%= @park.name %></h2>
 <h2>Cost of Admission: <%= @park.admission_cost %></h2>
+
+<h2>Rides:</h2>
+<ol>
+  <% @rides.each do |ride| %>
+    <li><%= ride.name %></li>
+  <% end %>
+</ol>
