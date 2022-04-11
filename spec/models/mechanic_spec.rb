@@ -6,6 +6,10 @@ describe Mechanic, type: :model  do
     it { should validate_numericality_of(:years_of_experience)}
   end
 
+  describe 'relationships' do
+    it { should have_many(:rides) }
+  end
+
   describe '::average_experience' do
     it 'finds average of all mechanics' do
       @mechanic1 = Mechanic.create!(name: 'Sherman', years_of_experience: 3)
