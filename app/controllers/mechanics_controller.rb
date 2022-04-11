@@ -5,6 +5,12 @@ class MechanicsController < ApplicationController
   end
 
   def show
-    @mechanic = Mechanic.find(params[:id])
+    if params[:ride_id].present?
+      @mechanic = Mechanic.find(params[:id])
+      @ride = Ride.search(params[:id])
+      @ride.save 
+    else
+      @mechanic = Mechanic.find(params[:id])
+    end
   end
 end

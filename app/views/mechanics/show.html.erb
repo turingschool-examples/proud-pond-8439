@@ -1,8 +1,16 @@
-<h1><%= @mechanic.name %></h1>
-<h2><%= @mechanic.years_experience %></h2>
+<h1>Name: <%= @mechanic.name %></h1>
+<h2>Years Experience: <%= @mechanic.years_experience %></h2>
 <h3>Rides I'm working on:</h3>
 
 <% @mechanic.show_rides.each do |ride| %>
 <p>Ride: <%= ride.name %></p>
 <p>Thrill Rating: <%= ride.thrill_rating %></p>
 <% end %>
+<br>
+
+<h3>Add a Ride to Workload: </h3>
+<%= form_with url: "/ridemechanics/new", method: :post, params: {:ride_id => ride.id, :mechanic_id => @mechanic.id}, method: :get, local: true do |f| %>
+<%= f.label :query, "ride id" %>
+<%= f.text_field :query, ride_id: :ride_id %>
+<%= f.submit "Submit"  %><br>
+<% end  %>
