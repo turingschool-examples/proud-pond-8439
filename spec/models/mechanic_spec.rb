@@ -4,7 +4,7 @@ RSpec.describe Mechanic do
 
   describe 'Relationships' do
 
-    it {should have_many(:mechanics_rides)}
-    it {should have_many(:rides).through (:mechanics_rides)}
+    it {should have_many :mechanics_ride}
+    it {should have_many(:rides).through (:mechanics_ride)}
   end
 end
