@@ -10,7 +10,7 @@ require 'rails_helper'
 
 RSpec.describe 'the merchant index page' do
   before :each do
-    @will = 
+    
   end
   it 'has the header of the mechanics page' do
     visit '/mechanics'
