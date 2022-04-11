@@ -17,4 +17,19 @@ RSpec.describe Mechanic do
       end
     end
   end
+
+  describe 'instance methods' do
+    describe '.open_rides_by_thrill_rating' do
+      it 'can return a given mechanics open rides sorted by thrill rating' do
+        amusement_park = AmusementPark.create!(name: 'Hershey Park', admission_cost: 50)
+        mechanic_1 = Mechanic.create!(name: "James", years_experience: 20)
+        ride_1 = mechanic_1.rides.create!(name: "The Great Bear", thrill_rating: 8, open: true, amusement_park_id: amusement_park.id)
+        ride_2 = mechanic_1.rides.create!(name: "Farenheit", thrill_rating: 9, open: false, amusement_park_id: amusement_park.id)
+        ride_3 = mechanic_1.rides.create!(name: "Storm Runner", thrill_rating: 10, open: true, amusement_park_id: amusement_park.id)
+        ride_4 = mechanic_1.rides.create!(name: "Skyrunner", thrill_rating: 9, open: true, amusement_park_id: amusement_park.id)
+
+        expect(mechanic_1.open_rides_by_thrill_rating).to eq([ride_3, ride_4, ride_1])
+      end
+    end
+  end
 end
