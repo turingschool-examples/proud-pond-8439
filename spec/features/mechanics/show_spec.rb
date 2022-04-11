@@ -49,7 +49,7 @@ RSpec.describe 'mechanics show page' do
 
     fill_in :ride_id, with: @ride6.id
     click_on "Submit"
-
+    
     expect(current_path).to eq("/mechanics/#{@mechanic1.id}")
     expect(page).to have_content(@ride6.name)
   end

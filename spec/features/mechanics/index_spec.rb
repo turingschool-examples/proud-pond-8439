@@ -9,12 +9,14 @@ RSpec.describe 'mechanics index page' do
     mechanic5 = Mechanic.create!(name: "Cersei Malfoy", years_experience: 8)
 
     visit "/mechanics"
+    expect(page).to have_content("All Mechanics")
 
     Mechanic.all.each do |mechanic|
       expect(page).to have_content(mechanic.name)
       expect(page).to have_content(mechanic.years_experience)
     end
+
     expect(page).to have_content("Average years experience: 9.8")
-    expect(page).not_to have_content("Average years experience: 12.0")
+    expect(page).not_to have_content("Average years experience: 9.80")
   end
 end
