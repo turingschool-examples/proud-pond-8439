@@ -1,6 +1,6 @@
 <h1><%= @mechanic.name %></h1>
 <p><%= @mechanic.years_experience %></p>
-<% @mechanic.rides.each do |ride| %>
+<% @mechanic.rides.order_by_thrill.each do |ride| %>
 <% if ride.open %>
 <p><%= ride.name %></p>
 <% end %>

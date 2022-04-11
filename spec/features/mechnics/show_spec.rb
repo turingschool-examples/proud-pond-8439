@@ -17,10 +17,10 @@ RSpec.describe 'mechanics show' do
     expect(page).to have_no_content("Dolly Jackson")
   end
 
-  it 'displays the names of rides they work on' do
+  it 'displays the names of rides they work on in order by thrill rating' do
     six_flags = AmusementPark.create!(name: 'Six Flags', admission_cost: 75)
     hurler = six_flags.rides.create!(name: 'The Hurler', thrill_rating: 7, open: true)
-    scrambler = six_flags.rides.create!(name: 'The Scrambler', thrill_rating: 4, open: true)
+    scrambler = six_flags.rides.create!(name: 'The Scrambler', thrill_rating: 10, open: true)
     ferris = six_flags.rides.create!(name: 'Ferris Wheel', thrill_rating: 7, open: false)
     MechanicRide.create!(mechanic_id: "#{@mechanic_1.id}", ride_id: "#{hurler.id}")
     MechanicRide.create!(mechanic_id: "#{@mechanic_1.id}", ride_id: "#{scrambler.id}")
@@ -31,5 +31,7 @@ RSpec.describe 'mechanics show' do
     expect(page).to have_content("The Hurler")
     expect(page).to have_content("The Scrambler")
     expect(page).to have_no_content("Ferris Wheel")
+
+    expect("The Scrambler").to appear_before("The Hurler")
   end
 end
