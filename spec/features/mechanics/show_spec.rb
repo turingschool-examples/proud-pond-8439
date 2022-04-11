@@ -32,7 +32,7 @@ RSpec.describe 'Mechanic Show Page', type: :feature do
       expect(page).to have_content(@scrambler.name)
       expect(page).to have_content(@scrambler.thrill_rating)
       expect(page).to have_content(@hurler.name)
-      expect(page).to have_content(@hurler.name)
+      expect(page).to have_content(@hurler.thrill_rating)
       expect(page).not_to have_content(@ferris_wheel.name)
     end
   end
