@@ -12,6 +12,7 @@ RSpec.describe 'mechanics show page' do
     @ride3 = @park.rides.create!(name: "Viscerion's Voyage", thrill_rating: 6, open: false)
     @ride4 = @park.rides.create!(name: "Bran's Fall", thrill_rating: 8, open: true)
     @ride5 = @park.rides.create!(name: "Brianne's Bear", thrill_rating: 9, open: true)
+    @ride6 = @park.rides.create!(name: "The Moon Door", thrill_rating: 8, open: true)
 
     RideMechanic.create!(ride_id: @ride1.id, mechanic_id: @mechanic1.id)
     RideMechanic.create!(ride_id: @ride2.id, mechanic_id: @mechanic1.id)
@@ -40,5 +41,16 @@ RSpec.describe 'mechanics show page' do
     expect(@ride2.name).to appear_before(@ride5.name)
     expect(@ride5.name).to appear_before(@ride1.name)
     expect(@ride1.name).not_to appear_before(@ride2.name)
+  end
+
+  it 'has a form to add a ride to a mechanic' do
+    visit "/mechanics/#{@mechanic1.id}"
+    expect(page).not_to have_content(@ride6.name)
+
+    fill_in :ride_id, with: @ride6.id
+    click_on "Submit"
+
+    expect(current_path).to eq("/mechanics/#{@mechanic1.id}")
+    expect(page).to have_content(@ride6.name)
   end
 end
