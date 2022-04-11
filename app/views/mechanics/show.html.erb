@@ -2,4 +2,12 @@
 <p>Experience: <%= @mechanic.years_experience %> </p>
 <% @mechanic.open_by_thrill.each do |ride| %>
   <p>Ride: <%= ride.name %></p>
-  <% end %>
+
+<%= form_with url: "/mechanics/#{@mechanic.id}?status=1",
+      method: :patch, local: true do |f| %>
+    <h2>  Add ride to workload <button class="btn btn-success btn-secondary btn-sm" type="submit">Add</button>
+        <%= f.text_field :rideid, value: ride.id, hidden: true %>
+    </h2>
+      <% end %>
+
+<% end %>
