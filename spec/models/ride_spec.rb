@@ -5,5 +5,10 @@ RSpec.describe Ride do
     it { should belong_to(:amusement_park) }
   end
   
+  describe  'validations'
+    it {should validate_presence_of(:name) }
+    it {should validate_presence_of(:thrill_rating) }
+    it {should validate_presence_of(:open) }
+  
   
 end
