@@ -7,6 +7,7 @@ RSpec.describe "mechanic show page" do
     @ride_1 = Ride.create!(name: "Swings", thrill_rating: 1, open: true, amusement_park_id: @park.id)
     @ride_2 = Ride.create!(name: "Colossus", thrill_rating: 5, open: true, amusement_park_id: @park.id)
     @ride_3 = Ride.create!(name: "X2", thrill_rating: 5, open: false, amusement_park_id: @park.id)
+    @ride_4 = Ride.create!(name: "Barb's Ride", thrill_rating: 5, open: false, amusement_park_id: @park.id)
 
     @mech_1 = Mechanic.create!(name: "Jimmy", years_experience: 1)
     @mech_2 = Mechanic.create!(name: "Barb", years_experience: 2)
@@ -14,6 +15,7 @@ RSpec.describe "mechanic show page" do
     @ride_mech_1 = RideMechanic.create!(ride_id: @ride_1.id, mechanic_id: @mech_1.id)
     @ride_mech_2 = RideMechanic.create!(ride_id: @ride_2.id, mechanic_id: @mech_1.id)
     @ride_mech_3 = RideMechanic.create!(ride_id: @ride_3.id, mechanic_id: @mech_1.id)
+    @ride_mech_4 = RideMechanic.create!(ride_id: @ride_4.id, mechanic_id: @mech_2.id)
     
     visit "/mechanics/#{@mech_1.id}"
   end
@@ -30,6 +32,7 @@ RSpec.describe "mechanic show page" do
     expect(page).to have_content("Swings")
     expect(page).to have_content("Colossus")
     expect(page).to_not have_content("X2")
+    expect(page).to_not have_content("Barb's Ride")
   end
   
   it "rides are listed with highest thrill rating first" do
