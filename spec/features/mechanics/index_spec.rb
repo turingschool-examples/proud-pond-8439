@@ -7,12 +7,15 @@ RSpec.describe 'Mechanic Index' do
   end
   it "has header" do
     visit '/mechanics'
-    save_and_open_page
     expect(page).to have_content("All Mechanics")
-    # expect(page).to have_content("Average Years of Experience: 7.66")
+    # expect(page).to have_content("Average Years of Experience: 7")
     within("#mech-#{@mech3.id}") do
       expect(page).to have_content("Kim")
       expect(page).to have_content("Years of Experience: 12")
+    end 
+    within("#mech-#{@mech2.id}") do
+      expect(page).to have_content("Rudy")
+      expect(page).to_not have_content("Years of Experience: 12")
     end 
   end
 end
