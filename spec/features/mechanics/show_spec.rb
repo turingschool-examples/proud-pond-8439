@@ -17,13 +17,13 @@ describe 'Mechanics show page' do
     )
 
     @ride_1 = @amusement_park_1.rides.create!(
-      name: "Lincoln Log Slide",
-      thrill_rating: 4,
+      name: "Actual Log Cabin",
+      thrill_rating: 1,
       open: true
     )
     @ride_2 = @amusement_park_1.rides.create!(
-      name: "Actual Log Cabin",
-      thrill_rating: 1,
+      name: "Lincoln Log Slide",
+      thrill_rating: 4,
       open: true
     )
     @ride_3 = @amusement_park_1.rides.create!(
@@ -65,6 +65,12 @@ describe 'Mechanics show page' do
       expect(page).to have_content("Lincoln Log Slide")
       expect(page).to have_content("Actual Log Cabin")
       expect(page).not_to have_content("Space Log Roller Coaster")
+    end
+  end
+
+  it 'sorts rides by thrill rating' do
+    within('#rides') do
+      expect("Lincoln Log Slide").to appear_before("Actual Log Cabin")
     end
   end
 end
