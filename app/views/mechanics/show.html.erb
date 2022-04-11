@@ -1,0 +1,14 @@
+
+<div id="mechanic-<%= @mechanic.id %>">
+  <h1><%= @mechanic.name %></h1>
+   <p><strong>Years of Experience:</strong>
+     <%= @mechanic.years_of_experience %></p>
+    <hr>
+</div>
+
+<h2> Current Rides: </h2>
+<div id="mechanic-rides">
+  <% @mechanic.rides.where(open: true).each do |ride| %>
+    <div id="ride-<%= ride.id %>"><h3><%= ride.name %></h3></div>
+  <% end %>
+</div>
