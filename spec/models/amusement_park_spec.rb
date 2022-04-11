@@ -8,7 +8,7 @@ RSpec.describe AmusementPark do
   describe 'instance methods' do
     describe '.admission_cost_to_currency' do
       it 'can format the admission cost to show two decimal places for dollars and cents' do
-        amusement_park_ = AmusementPark.create!(name: 'Hershey Park', admission_cost: 50)
+        amusement_park = AmusementPark.create!(name: 'Hershey Park', admission_cost: 50)
 
         expect(amusement_park.admission_cost_to_currency).to eq("50.00")
       end
