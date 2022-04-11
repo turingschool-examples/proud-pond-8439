@@ -8,4 +8,9 @@ class MechanicsController < ApplicationController
     @rides = @mechanic.rides.thrill_level
   end
 
+  def new
+    RideMechanic.create(ride_id: params[:ride], mechanic_id: params[:id])
+    redirect_to "/mechanics/#{params[:id]}"
+  end
+
 end
