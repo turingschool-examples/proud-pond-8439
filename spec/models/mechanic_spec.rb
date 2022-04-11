@@ -30,7 +30,6 @@ RSpec.describe Mechanic do
       kim_fixes_things = MechanicRide.create!(mechanic: @kim, ride: @hurler)
       kim_works_more = MechanicRide.create!(mechanic: @kim, ride: @scrambler)
       kim_fixes_them_all = MechanicRide.create!(mechanic: @kim, ride: @ferris)
-
     end
 
     describe '.open_rids_by_rating' do 
@@ -39,5 +38,4 @@ RSpec.describe Mechanic do
       end
     end
   end
-
 end
