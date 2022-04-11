@@ -34,7 +34,7 @@ RSpec.describe "Mechanics show page" do
     it "displays rides they are working on" do
       visit "/mechanics/#{@kara.id}"
 
-      within('#ride') do
+      within('#rides') do
         expect(page).to have_content("The Hurler")
         expect(page).to have_content("The Scrambler")
       end
@@ -43,7 +43,7 @@ RSpec.describe "Mechanics show page" do
     it "displays only open rides" do
       visit "/mechanics/#{@kara.id}"
 
-      within('#ride') do
+      within('#rides') do
         expect(page).to have_content("The Hurler")
         expect(page).to_not have_content("Ferris Wheel")
       end
@@ -52,8 +52,10 @@ RSpec.describe "Mechanics show page" do
     it "displays rides in thrill descending order" do
       visit "/mechanics/#{@kara.id}"
 
-      expect("The Hurler").to appear_before("The Scrambler")
-      expect("The Scrambler").to appear_before("Carousel")
+      within('#rides') do
+        expect("The Hurler").to appear_before("The Scrambler")
+        expect("The Scrambler").to appear_before("Carousel")
+      end
     end
 
     it "allows user to add to their workload" do
@@ -65,7 +67,9 @@ RSpec.describe "Mechanics show page" do
       click_on "Submit"
       expect(current_path).to eq("/mechanics/#{@kara.id}")
 
-      expect(page).to have_content("Mine Shaft")
+      within('#rides') do
+        expect(page).to have_content("Mine Shaft")
+      end
     end
   end
 end

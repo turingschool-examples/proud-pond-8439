@@ -13,7 +13,7 @@ RSpec.describe "Amusement Park show page" do
 
   describe "when I visit the show page" do
     it "displays the name and price" do
-      visit "/amusementparks/#{@six_flags.id}"
+      visit "/amusement_parks/#{@six_flags.id}"
 
       expect(page).to have_content("Six Flags")
       expect(page).to have_content("$75.00")
