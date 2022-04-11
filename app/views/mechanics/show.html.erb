@@ -1,0 +1,8 @@
+<h1><%= @mechanic.name %></h1>
+<h2><%= @mechanic.years_experience %></h2>
+<h3>Rides I'm working on:</h3>
+
+<% @mechanic.show_rides.each do |ride| %>
+<p>Ride: <%= ride.name %></p>
+<p>Thrill Rating: <%= ride.thrill_rating %></p>
+<% end %>

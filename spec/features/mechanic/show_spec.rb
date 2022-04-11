@@ -11,9 +11,11 @@ RSpec.describe 'the mechanic show page' do
     ride3 = amusementpark1.rides.create!(name: "Shogun Assassin", thrill_rating: 6,   open: true)
     mechanic4 = Mechanic.create!(name: "Tomisaburo Wakayama", years_experience: 333)
     ride_mechanic1 = RideMechanic.create!(ride_id: ride1.id, mechanic_id: mechanic4.id)
+    ride_mechanic2 = RideMechanic.create!(ride_id: ride2.id, mechanic_id: mechanic4.id)
+    ride_mechanic3 = RideMechanic.create!(ride_id: ride3.id, mechanic_id: mechanic4.id)
 
     visit "/mechanics/#{mechanic4.id}"
-
+save_and_open_page
     expect(page).to have_content(mechanic4.name)
     expect(page).to have_content(mechanic4.years_experience)
     expect(page).to have_content(ride1.name)
