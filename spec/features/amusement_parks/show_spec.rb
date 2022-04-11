@@ -14,7 +14,7 @@ RSpec.describe 'amusement_parks show page' do
         visit "/amusement_parks/#{@amusement_park.id}"
 
         expect(page).to have_content(@amusement_park.name)
-        expect(page).to have_content("Admission Price: #{@amusement_park.admission_cost_to_currency}")
+        expect(page).to have_content("Admission Price: $50.00")
       end
 
       it 'and i see the names of all the rides listed in alphabetical order' do
