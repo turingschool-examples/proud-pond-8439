@@ -6,3 +6,9 @@
     <%= ride.name %>
   <% end  %>
 <% end  %>
+<h3>Add a Ride</h3>
+<%= form_with url: "/ride_mechanic/", method: :create do |form| %>
+  <%= form.label :query, "Ride ID:" %>
+  <%= form.text_field :query %>
+  <%= form.submit "Submit" %>
+<% end %>

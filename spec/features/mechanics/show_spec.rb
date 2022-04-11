@@ -10,7 +10,6 @@ RSpec.describe 'Mechanic Show' do
     RideMechanic.create!(ride_id: @ride2.id, mechanic_id: @mech1.id)
     RideMechanic.create!(ride_id: @ride3.id, mechanic_id: @mech1.id)
     visit "/mechanic/#{@mech1.id}"
-    save_and_open_page
     
     expect(page).to have_content("Jeff")
     expect(page).to have_content("The Hurler")
@@ -18,5 +17,9 @@ RSpec.describe 'Mechanic Show' do
     expect(page).to_not have_content("Ferris Wheel")
     expect(page.text.index("The Hurler")).to be < (page.text.index("The Scrambler"))
     
+  end
+  
+  it "has a add a ride box" do
+    expect(page).to have_content('Add a Ride')
   end
 end
