@@ -19,7 +19,7 @@ RSpec.describe 'amusement park show page' do
     visit "/amusement_parks/#{@park.id}"
 
     expect(page).to have_content(@park.name)
-    expect(page).to have_content(@park.admission_cost)
+    expect(page).to have_content("Admissions: $105.00")
     expect(page).not_to have_content(@park2.name)
     expect(page).not_to have_content(@park2.admission_cost)
   end
@@ -37,7 +37,6 @@ RSpec.describe 'amusement park show page' do
 
   it 'lists the average thrill rating of the parks rides' do
     visit "/amusement_parks/#{@park.id}"
-    save_and_open_page
 
     expect(page).to have_content("Average Thrill Rating: 7.3/10")
     expect(page).not_to have_content("Average Thrill Rating: 7.3333/10")

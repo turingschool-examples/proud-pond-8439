@@ -11,7 +11,6 @@ class Ride < ApplicationRecord
 
   def self.avg_thrill
     average(:thrill_rating)
-    # require "pry"; binding.pry
   end
 
 end

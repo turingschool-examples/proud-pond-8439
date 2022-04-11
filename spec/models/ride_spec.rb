@@ -10,4 +10,25 @@ RSpec.describe Ride do
     it { should validate_presence_of(:thrill_rating) }
     # it { should validate_presence_of(:open) }
   end
+
+  describe 'class methods' do
+    before (:each) do
+      @park = AmusementPark.create!(name: "Westeros World", admission_cost: 105)
+
+      @ride1 = @park.rides.create!(name: "Viscerion's Voyage", thrill_rating: 6, open: false)
+      @ride2 = @park.rides.create!(name: "Bran's Fall", thrill_rating: 8, open: true)
+      @ride3 = @park.rides.create!(name: "Brianne's Bear", thrill_rating: 9, open: true)
+      @ride4 = @park.rides.create!(name: "The Moon Door", thrill_rating: 8, open: true)
+    end
+
+    it '#alpha_order' do
+      expect(Ride.alpha_order).to eq([@ride2, @ride3, @ride4, @ride1])
+    end
+
+    it '#avg_thrill' do
+      expect(Ride.avg_thrill).to eq(7.75)
+      expect(Ride.avg_thrill).not_to eq(7.8)
+    end
+  end
+
 end

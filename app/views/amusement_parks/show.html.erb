@@ -1,5 +1,5 @@
 <h1><%= @park.name %></h1>
-<h5>Admission Cost: <%=@park.admission_cost%></h5>
+<h5>Admissions: $<%=@park.admission_cost%>.00</h5>
 
 <h3>Rides</h3>
 <% @park.rides.alpha_order.each_with_index do |ride, index| %>
