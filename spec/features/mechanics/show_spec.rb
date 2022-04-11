@@ -92,15 +92,15 @@ RSpec.describe "Mechanic Show Page" do
     end
 
     it 'i see an error message if i enter a non valid id' do
-      #happy path
+      #sad path
       visit "mechanics/#{@chad.id}"
-      fill_in "Ride id number", with: "99999"
+      fill_in "Ride id number", with: "999"
       click_on "Submit"
 
       expect(current_path).to eq("/mechanics/#{@chad.id}")
       expect(page).to have_content("Error, no ride found")
 
-
+      save_and_open_page
     end
 
 
