@@ -5,3 +5,5 @@
 <% @amusement_park.sort_rides.each do |ride| %>
   <p> <%= ride.name %> </p>
 <% end %>
+
+<h3>Average Thrill Rating: <%= @amusement_park.avg_thrills.round(1) %>/10</h3>
