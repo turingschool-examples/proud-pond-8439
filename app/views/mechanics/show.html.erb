@@ -2,3 +2,8 @@
   <h1><%= @mechanic.name %></h1>
   <h2>Years experience: <%= @mechanic.years_experience%></h2>
 </div>
+<div id="mechanic-rides">
+  <% @mechanic.rides.where(open: true).order(thrill_rating: :desc).each do |ride| %>
+    <div id="ride-<%= ride.id %>"><h3><%= ride.name %></h3></div>
+  <% end %>
+</div>

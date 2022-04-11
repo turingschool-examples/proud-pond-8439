@@ -25,4 +25,24 @@ RSpec.describe 'Mechanic Show Page', type: :feature do
     end
   end
 
+  it 'displays all rides the mechanic is currently working on and are currently open' do
+    visit "mechanics/#{@adam.id}"
+
+    within("#mechanic-rides") do
+      expect(page).to have_content(@scrambler.name)
+      expect(page).to have_content(@hurler.name)
+    end
+  end
+
+
+  it 'displays all valid rides in descending order of thrill rating' do
+    visit "mechanics/#{@adam.id}"
+
+    high_thrill = find("#ride-#{@hurler.id}")
+    low_thrill = find("#ride-#{@scrambler.id}")
+
+    within("#mechanic-rides") do
+      expect(high_thrill).to appear_before(low_thrill)
+    end
+  end
 end
