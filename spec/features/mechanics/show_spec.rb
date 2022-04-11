@@ -38,11 +38,19 @@ RSpec.describe "mechanic show page" do
   it "rides are listed with highest thrill rating first" do
     expect("Colossus").to appear_before("Swings")
   end
+  
+  it "has a form to add a ride to their workload" do
+    expect(page).to_not have_content("Barb's Ride")
+    fill_in "Ride id", with: "#{@ride_4.id}"
+    click_on "Submit"
+    expect(current_path).to eq("/mechanics/#{@mech_1.id}")
+    expect(page).to have_content("Barb's Ride")
+  end
 end
 
-
 # As a user,
-# When I visit a mechanic show page
-# I see their name, years of experience, and the names of rides they’re working on
-# And I only see rides that are open
-# And the rides are listed by thrill rating in descending order (most thrills first)
+# When I go to a mechanics show page
+# I see a form to add a ride to their workload
+# When I fill in that field with an id of an existing ride and hit submit
+# I’m taken back to that mechanic's show page
+# And I see the name of that newly added ride on this mechanics show page
