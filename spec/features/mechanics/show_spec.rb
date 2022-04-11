@@ -33,7 +33,7 @@ describe 'Mechanics show page' do
     )
     @ride_4 = @amusement_park_1.rides.create!(
       name: "Kiddy Log Jump",
-      thrill_rating: 11,
+      thrill_rating: 10,
       open: true
     )
 
