@@ -28,6 +28,7 @@ RSpec.describe 'mechanics index page', type: :feature do
     expect(page).to have_content("2")
     expect(page).to have_content("Sam")
     expect(page).to have_content("10")
+    save_and_open_page
     expect(page).to have_content("Average Years of Experience: 5")
   end
 
