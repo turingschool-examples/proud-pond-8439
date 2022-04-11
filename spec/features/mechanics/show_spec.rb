@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Mechanics index" do
+RSpec.describe "Mechanics show" do
   before :each do
     @six_flags = AmusementPark.create!(name: 'Six Flags', admission_cost: 75)
     @universal = AmusementPark.create!(name: 'Universal Studios', admission_cost: 80)
@@ -16,20 +16,10 @@ RSpec.describe "Mechanics index" do
     @mech_3 = @scrambler.mechanics.create!(name: "Rhonda Roundhouse", years_experience: 19)
   end
 
-  it "lists all mechanic names & their years_experience" do
-    visit "/mechanics"
-    # save_and_open_page
+  it "displays mechanic name and years of experience" do
+    visit "/mechanics/#{@mech_1.id}"
 
-    expect(page).to have_content("All Mechanics")
-    expect(page).to have_content("Billy Bighammer\nYears Experience: 50")
-    expect(page).to have_content("Linda Licehead\nYears Experience: 8")
-    expect(page).to have_content("Rhonda Roundhouse\nYears Experience: 19")
-    expect(page).to have_content("Rhonda Roundhouse\nYears Experience: 19")
-  end
-
-  it "lists avg years_experience for all mechanics" do
-    visit "/mechanics"
-
-    expect(page).to have_content("Average Years Experience: 25.7")
+    expect(page).to have_content("Name: Billy Bighammer")
+    expect(page).to have_content("Years Experience: 50")
   end
 end
