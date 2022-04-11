@@ -5,16 +5,22 @@ RSpec.describe 'Mechanics Show page' do
     @john = Mechanic.create!(name: "John", years_experience:1)
     @six_flags = AmusementPark.create!(name: 'Six Flags', admission_cost: 75)
 
-    @hurler = six_flags.rides.create!(name: 'The Hurler', thrill_rating: 7, open: true)
-    @scram = six_flags.rides.create!(name: 'The Scrambler', thrill_rating: 4, open: true)
-    @ferris = six_flags.rides.create!(name: 'Ferris Wheel', thrill_rating: 7, open: false)
+    @hurler = @six_flags.rides.create!(name: 'The Hurler', thrill_rating: 7, open: true)
+    @scram = @six_flags.rides.create!(name: 'The Scrambler', thrill_rating: 4, open: true)
+    @ferris = @six_flags.rides.create!(name: 'Ferris Wheel', thrill_rating: 7, open: false)
 
     MechanicRide.create!(mechanic:@john, ride:@hurler)
     MechanicRide.create!(mechanic:@john, ride:@scram)
     MechanicRide.create!(mechanic:@john, ride:@ferris)
 
-    visit "/mechanics/#{@john.id}"
   end
+
+  it 'displays mechanic attributes and rides they work on' do
+    visit "/mechanics/#{@john.id}"
+
+  end
+
+end
 #
 # Story 2 - Mechanic Show Page
 #
