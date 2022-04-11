@@ -9,7 +9,6 @@ class Mechanic < ApplicationRecord
 
   def open_rides_desc
     rides.where(open: true).order("thrill_rating DESC")
-
   end
 
 end
