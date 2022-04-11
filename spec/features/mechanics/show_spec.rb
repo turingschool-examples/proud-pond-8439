@@ -34,7 +34,7 @@ describe 'Mechanics show page' do
     @ride_4 = @amusement_park_1.rides.create!(
       name: "Kiddy Log Jump",
       thrill_rating: 11,
-      open: false
+      open: true
     )
 
     RideMechanic.create(mechanic_id: @mech_1.id, ride_id:@ride_1)
@@ -50,5 +50,13 @@ describe 'Mechanics show page' do
     expect(page).to have_content("John Mulany")
     expect(page).to have_content("25")
     expect(page).not_to have_content("Jane Bologni")
+  end
+
+  it 'displays the names of the rides the mechanic is working on' do
+    within('#rides') do
+      expect(page).to have_content("Lincoln Log Slide")
+      expect(page).to have_content("Actual Log Cabin")
+      expect(page).not_to have_content("Kiddy Log Jump")
+    end
   end
 end
