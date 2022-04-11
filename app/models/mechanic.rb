@@ -12,4 +12,5 @@ class Mechanic < ApplicationRecord
   def order_by_thrill
     rides.order(thrill_rating: :desc)
   end
+  #couldn't decide if this should live here or in the rides model as a class method
 end
