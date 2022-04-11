@@ -1,7 +1,6 @@
 require 'rails_helper'
 
-
-RSpec.describe "Mechanics Index Page" do
+RSpec.describe "Mechanic Show Page" do
 
   before do
     AmusementPark.destroy_all
@@ -43,37 +42,29 @@ RSpec.describe "Mechanics Index Page" do
 
   describe 'As a visitor' do
 
-    it 'has a list of all mechanic names and their experience and avg of all mechanics experience' do
-      visit "/mechanics"
+    it 'i see a mechanics attributes, names of rides they are working on (only if they are open), ordered by thrill rating' do
 
-      expect(page).to have_content("All Mechanics")
-      # save_and_open_page
-      within "#mechanic-#{@bob.id}" do
-        expect(page).to have_content("Name: bob")
-        expect(page).to have_content("Experience: 15")
-        expect(page).to_not have_content("Name: joe")
+      visit "/mechanics/#{@skeeter.id}"
+
+      expect(page).to have_content("Name: skeeter")
+      expect(page).to have_content("Experience: 4")
+
+      within "#rides" do
+        expect(page).to_not have_content("#{@twister.name}")
+        expect("Tea Cups").to appear_before("Hurler")
+        expect("Hurler").to appear_before("Scrambler")
       end
 
-      within "#mechanic-#{@joe.id}" do
-        expect(page).to have_content("Name: joe")
-        expect(page).to have_content("Experience: 8")
-        expect(page).to_not have_content("Name: chad")
-      end
-
-      within "#mechanic-#{@skeeter.id}" do
-        expect(page).to have_content("Name: skeeter")
-        expect(page).to have_content("Experience: 4")
-        expect(page).to_not have_content("Name: joe")
-      end
-
-      within "#mechanic-#{@chad.id}" do
-        expect(page).to have_content("Name: chad")
-        expect(page).to have_content("Experience: 26")
-        expect(page).to_not have_content("Experience: 8")
-      end
-
-      expect(page).to have_content("All Mechanics AVG Experience: 13.25")
     end
 
+
+
+
   end
+
+
+
+
+
+
 end
