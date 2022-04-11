@@ -16,7 +16,6 @@ RSpec.describe 'mechanic index page', type: :feature do
 	it 'shows info for mechanic and open rides they are working on by thrill_rating' do 
 		visit "/mechanics/#{@kim.id}"
 
-
 		within('#mechanic_info') do 
 			expect(page).to have_content('Kim')
 			expect(page).to have_content(10)
@@ -28,10 +27,29 @@ RSpec.describe 'mechanic index page', type: :feature do
 			expect(page).to_not have_content('Ferris Wheel')
 			expect('The Hurler').to appear_before('The Scrambler')
 		end
-
-		
 	end
 
+	it 'has a form to add a new ride' do 
+	    universal = AmusementPark.create!(name: 'Universal Studios', admission_cost: 80)
+	    cups = universal.rides.create!(name: 'Spinning Cups', thrill_rating: 5, open: true)
+      	kim_over_time = MechanicRide.create!(mechanic: @kim, ride: cups)
+
+		visit "/mechanics/#{@kim.id}"
+
+		within('#add_ride') do 
+			fill_in 'ride_id', with: cups.id
+			click_on 'Add Ride'
+
+			expect(current_path).to eq("/mechanics/#{@kim.id}")
+		end
+		within('#rides_info') do
+			expect(page).to have_content('The Hurler')    
+			expect(page).to have_content('The Scrambler')		
+			expect(page).to have_content('Spinning Cups')
+			expect('The Hurler').to appear_before('Spinning Cups')
+			expect('Spinning Cups').to appear_before('The Scrambler')
+		end
+	end
 
 
 
