@@ -5,7 +5,8 @@ class CreateRides < ActiveRecord::Migration[5.2]
       t.string :name
       t.integer :thrill_rating
       t.boolean :open
-      
+      t.references :mechanic_rides, foreign_key: true
+
       t.timestamps
     end
   end
