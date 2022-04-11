@@ -10,6 +10,9 @@ RSpec.describe 'Mechanics index page' do
   end
 
   it 'shows all mechanics and attributes' do
+    expect(page).to have_header('All Mechanics')
+    expect(page).to have_content('Average years of experience: 7.67')
+
     within "#mechanic-#{@mechanic_1.id}" do
       expect(page).to have_content('Name: Billy Johnson')
       expect(page).to have_content('Years experience: 8')
