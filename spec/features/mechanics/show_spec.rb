@@ -59,4 +59,12 @@ describe 'Mechanics show page' do
       expect(page).not_to have_content("Kiddy Log Jump")
     end
   end
+
+  it 'does not display closed rides' do
+    within('#rides') do
+      expect(page).to have_content("Lincoln Log Slide")
+      expect(page).to have_content("Actual Log Cabin")
+      expect(page).not_to have_content("Space Log Roller Coaster")
+    end
+  end
 end
