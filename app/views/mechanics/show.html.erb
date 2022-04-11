@@ -2,7 +2,13 @@
 <p>Experience: <%= @mechanic.years_experience %></p>
 <p>Rides: <% @mechanic.rides.by_thrill.each do |ride| %>
   <% if ride.open == true %>
-  <p><%= ride.name %></p> 
+  <p><%= ride.name %></p>
   <% end %>
   <% end %>
 </p>
+<p>Add Ride to workload</p>
+<%= form_with url: '/ride_mechanics', method: :post, local: true do |f| %>
+<%= f.label :ride_id %>
+<%= f.number_field :ride_id %>
+<%= f.submit "Add New Ride" %>
+<% end %>

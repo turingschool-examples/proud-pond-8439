@@ -9,6 +9,7 @@ RSpec.describe "Mechanics Show Page" do
     @yak = Ride.create!(name: "Yackity Yak", thrill_rating: 9, open: true, amusement_park_id: @kings_island.id)
     @bruiser = Ride.create!(name: "Bruiser", thrill_rating: 5, open: false, amusement_park_id: @kings_island.id)
     @zoomer = Ride.create!(name: "Zoomer", thrill_rating: 10, open: true, amusement_park_id: @kings_island.id)
+    @eeek = Ride.create!(name: "EEEEEK!", thrill_rating: 3, open: true, amusement_park_id: @kings_island.id)
     @mech_ride_1 = RideMechanic.create!(mechanic_id: @mech.id, ride_id: @roller.id)
     @mech_ride_2 = RideMechanic.create!(mechanic_id: @boris.id, ride_id: @bruiser.id)
     @mech_ride_3 = RideMechanic.create!(mechanic_id: @boris.id, ride_id: @yak.id)
@@ -36,5 +37,13 @@ RSpec.describe "Mechanics Show Page" do
     visit "/mechanics/#{@boris.id}"
 
     expect(@zoomer.name).to appear_before(@yak.name)
+  end
+
+  it "lists a new ride once form is completed " do
+    visit "/mechanics/#{@boris.id}"
+    fill_in "ride_id", with: @eeek.id
+    click_on("Add New Ride")
+    expect(current_path).to eq("/mechanics/#{@boris.id}")
+    expect(page).to have_content(@eeek.name)
   end
 end
