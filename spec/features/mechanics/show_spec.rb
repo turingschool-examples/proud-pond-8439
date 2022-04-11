@@ -29,11 +29,13 @@ RSpec.describe "Mechanics show" do
     expect(page).to_not have_content("Linda Licehead")
   end
 
-  it "displays names of open rides mechanic is working on" do
+  it "displays names of open rides mechanic is working on in desc order by thrill_rating" do
     visit "/mechanics/#{@mech_1.id}"
-
+    # save_and_open_page
     expect(page).to have_content("The Hurler")
     expect(page).to have_content("The Scrambler")
+
+    expect("The Scrambler").to appear_before("The Hurler")
 
     expect(page).to_not have_content("Ferris Wheel")
     expect(page).to_not have_content("Jaws")
