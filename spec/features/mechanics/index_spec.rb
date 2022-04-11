@@ -22,7 +22,6 @@ RSpec.describe "Mechanics Index Page" do
 
   it "lists the years of experience across all mechanics" do
     visit "/mechanics"
-    save_and_open_page
 
     expect(page).to have_content(Mechanic.avg_years_experience)
   end
