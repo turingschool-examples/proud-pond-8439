@@ -25,4 +25,8 @@ describe 'Mechanics index page' do
       expect(page).to have_content("45")
     end
   end
+
+  it 'displays all mechanics average years of expecrience' do
+    expect(page).to have_content("Average years of experience: 35")
+  end
 end
