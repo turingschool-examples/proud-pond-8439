@@ -27,7 +27,7 @@ RSpec.describe "Mechanics index" do
     expect(page).to have_content("Rhonda Roundhouse\nYears Experience: 19")
   end
 
-  xit "lists avg years_experience for all mechanics" do
+  it "lists avg years_experience for all mechanics" do
     visit "/mechanics"
 
     expect(page).to have_content("Average Years Experience: 25.7")

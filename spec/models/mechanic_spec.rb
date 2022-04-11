@@ -22,7 +22,7 @@ RSpec.describe Mechanic do
 
   describe "class methods" do
     it "finds average age of all mechanics" do
-      expect(Mechanic.avg_years_experience).to eq(25.7)
+      expect(Mechanic.avg_years_experience.round(1).to_f).to eq(25.7)
     end
   end
 
