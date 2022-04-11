@@ -22,8 +22,6 @@ Mechanic.destroy_all
 @joe = Mechanic.create!(name: 'joe', years_experience: 8)
 @skeeter = Mechanic.create!(name: 'skeeter', years_experience: 4)
 @chad = Mechanic.create!(name: 'chad', years_experience: 26)
-@steve = Mechanic.create!(name: 'steve', years_experience: 11)
-
 #bob rides
 @bob1 = MechanicRide.create!(ride: @hurler, mechanic: @bob)
 @bob2 = MechanicRide.create!(ride: @eraser, mechanic: @bob)
