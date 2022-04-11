@@ -21,7 +21,7 @@ RSpec.describe AmusementPark do
         ride_2 = amusement_park.rides.create!(name: "Farenheit", thrill_rating: 9, open: true)
         ride_3 = amusement_park.rides.create!(name: "Storm Runner", thrill_rating: 10, open: true)
 
-        expect(amusement_park.alphabetical_rides).to eq([ride_2, ride_3, ride_4])
+        expect(amusement_park.alphabetical_rides).to eq([ride_2, ride_3, ride_1])
       end
     end
   end
