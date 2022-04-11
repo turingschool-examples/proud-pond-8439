@@ -35,7 +35,7 @@ RSpec.describe 'Amusement Park show page' do
 
     expect('Mind Eraser').to_not appear_before('Boomerang')
     expect('Mind Eraser').to appear_before('The Twister')
-    expect('Mind Eraser').to appear_before('The Twister2')
+    expect('Mind Eraser').to appear_before('The Twister 2')
 
     expect('The Twister').to_not appear_before('Boomerang')
     expect('The Twister').to_not appear_before('Mind Eraser')

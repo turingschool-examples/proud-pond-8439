@@ -20,7 +20,7 @@ RSpec.describe AmusementPark do
     end
 
     it '.average_ride_rating' do
-      expect(@park.average_thrill_rating).to eq(8.75)
+      expect(@park.average_ride_rating).to eq(8.75)
     end
   end
 end
