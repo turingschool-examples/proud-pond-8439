@@ -6,6 +6,5 @@ class MechanicsController < ApplicationController
   def show 
     @mech = Mechanic.find(params[:id])
     @rides = @mech.rides.order(thrill_rating: :desc)
-    require "pry"; binding.pry
   end
 end 

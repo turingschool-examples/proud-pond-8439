@@ -16,7 +16,7 @@ RSpec.describe 'Mechanic Show' do
     expect(page).to have_content("The Hurler")
     expect(page).to have_content("The Scrambler")
     expect(page).to_not have_content("Ferris Wheel")
-    
+    expect(page.text.index("The Hurler")).to be < (page.text.index("The Scrambler"))
     
   end
 end
