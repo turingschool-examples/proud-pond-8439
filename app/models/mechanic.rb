@@ -1,5 +1,6 @@
 class Mechanic < ApplicationRecord
-  has_many :rides, through: :ride_mechanics
+  has_many :rides, through: :mechanics_rides
+  has_many :mechanics_rides
 
   def self.average_years
     @mechanics = Mechanic.all

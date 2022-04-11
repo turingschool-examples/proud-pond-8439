@@ -25,11 +25,15 @@ ActiveRecord::Schema.define(version: 2022_04_11_160620) do
   create_table "mechanics", force: :cascade do |t|
     t.string "name"
     t.integer "years_experience"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "mechanics_rides", id: false, force: :cascade do |t|
     t.bigint "ride_id", null: false
     t.bigint "mechanic_id", null: false
+    t.index ["mechanic_id", "ride_id"], name: "index_mechanics_rides_on_mechanic_id_and_ride_id"
+    t.index ["ride_id", "mechanic_id"], name: "index_mechanics_rides_on_ride_id_and_mechanic_id"
   end
 
   create_table "rides", force: :cascade do |t|
