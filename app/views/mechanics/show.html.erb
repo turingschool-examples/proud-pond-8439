@@ -18,8 +18,7 @@
 <br><br>
 <h3>Add Ride to Workload:</h3>
 
-<%= form_with url: "/mechanics/#{@mechanic.id}", method: :post, local: true do |form| %>
-  <%= form.label :ride_id_number %>
-  <%= form.text_field :ride_id_number %>
-  <%= form.submit "Submit" %>
-<% end %>
+<%= render partial: 'form', locals: {
+  path: "/mechanics/#{@mechanic.id}",
+  method: :p0st,
+  button_text: 'Submit'} %>
