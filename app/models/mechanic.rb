@@ -11,6 +11,5 @@ class Mechanic < ApplicationRecord
 
   def order_by_thrill
     rides.order(thrill_rating: :desc)
-    # require "pry"; binding.pry
   end
 end
