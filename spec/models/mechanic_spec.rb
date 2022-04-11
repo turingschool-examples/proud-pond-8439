@@ -1,15 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe AmusementPark do
+RSpec.describe Mechanic do
   describe 'relationships' do
     it { should have_many(:rides) }
     it { should have_many(:ride_mechanics) }
-    it { should have_many(:mechanics) }
   end
 
   describe 'validations' do
-    it { should validate_presence_of(:name) }
-    it { should validate_presence_of(:admission_cost) }
+    it { should validate_presence_of(:name)}
+    it { should validate_presence_of(:years_experience)}
   end
-
 end
