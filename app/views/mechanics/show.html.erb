@@ -1,0 +1,16 @@
+<% open_rides = [] %>
+<% @mechanic.rides.each do |ride| %>
+  <% if ride.open == true %>
+    <% open_rides << ride %>
+  <% end %>
+  <% open_rides.sort_by(&:thrill_rating) %>
+<% end %>
+
+<h2>Name: <%= @mechanic.name %></h2>
+<h2>Years of Experience: <%= @mechanic.years_experience %></h2>
+<h2>Assigned Open Rides:</h2>
+<ul>
+  <% open_rides.each do |ride| %>
+    <li><%= ride.name %></li>
+  <% end %>
+</ul>
