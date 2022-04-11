@@ -1,0 +1,14 @@
+
+<section id = 'mechanic_info'>
+<h4>Mechanic Info:</h4>
+<p>Name: <%= @mechanic.name %></p>
+<p>Years of experience: <%= @mechanic.years_experience %></p>
+</section>
+
+
+<section id = 'rides_info'>
+<h4>Open rides under this mechanic's care:</h4>
+<% @mechanic.open_rides_by_rating.each_with_index do |ride, index| %>
+<p>Ride No. <%= index + 1 %>: <%= ride.name %></p>
+<% end %>
+</section>

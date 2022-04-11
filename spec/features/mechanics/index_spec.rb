@@ -12,7 +12,7 @@ RSpec.describe 'mechanic index page', type: :feature do
 
 	it 'shows all mechanics with name and experience' do 
 		visit '/mechanics'
-		save_and_open_page
+
 		expect(page).to have_content('All Mechanics')
 		expect(page).to have_content('Josh')
 		expect(page).to have_content('Sal')
@@ -32,13 +32,5 @@ RSpec.describe 'mechanic index page', type: :feature do
 
 		expect(page).to have_content('Average years of experience: 5')
 	end
-
-
-
-
-
-
-
-
 
 end
