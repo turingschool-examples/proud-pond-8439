@@ -14,3 +14,9 @@
     <li><%= ride.name %></li>
   <% end %>
 </ul>
+
+<%= form_with url: "", method: :get, local: true do |f| %>
+  <%= f.label :ride_id  %>
+  <%= f.text_field :ride_id %>
+  <%= f.submit 'Submit' %>
+<% end %>

@@ -7,6 +7,7 @@ RSpec.describe 'mechanic show page' do
     @ride1 = @park1.rides.create!(name: "Boomerang", thrill_rating: 10, open: true)
     @ride2 = @park1.rides.create!(name: "Shotgun", thrill_rating: 9, open: false)
     @ride3 = @park2.rides.create!(name: "Kite", thrill_rating: 5, open: true)
+    @ride4 = @park2.rides.create!(name: "Lion King", thrill_rating: 5, open: true)
     @mech1 = Mechanic.create!(name: "Cory", years_experience: 10)
     @mech2 = Mechanic.create!(name: "Kim", years_experience: 10)
     @mech3 = Mechanic.create!(name: "Susan", years_experience: 20)
@@ -17,7 +18,7 @@ RSpec.describe 'mechanic show page' do
   end
 
 
-  it "has a header" do
+  it "shows the attributes of the mechanic and their associated open rides" do
     visit "/mechanics/#{@mech1.id}"
 
     expect(page).to have_content(@mech1.name)
@@ -27,6 +28,15 @@ RSpec.describe 'mechanic show page' do
     expect(page).to have_no_content(@mech2.name)
     expect(page).to have_no_content(@mech3.name)
     expect(page).to have_no_content(@ride2.name)
+  end
+
+  xit "lets you add a ride to the mechanics show page" do
+    visit "/mechanics/#{@mech1.id}"
+
+    fill_in 'Ride Id', with: "#{@ride4.id}"
+    click_button 'Submit'
+
+    expect(page).to have_content(@ride4.name)
   end
 
 end
