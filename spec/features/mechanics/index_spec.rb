@@ -4,9 +4,9 @@ RSpec.describe 'mechanics index page' do
   describe 'as a user' do
     describe 'when i visit the mechanics index page' do
       before :each do
-        mechanic_1 = Mechanic.create!(name: "James", years_experience: 20)
-        mechanic_2 = Mechanic.create!(name: "Ian", years_experience: 19)
-        mechanic_3 = Mechanic.create!(name: "Tom", years_experience: 22)
+        @mechanic_1 = Mechanic.create!(name: "James", years_experience: 20)
+        @mechanic_2 = Mechanic.create!(name: "Ian", years_experience: 19)
+        @mechanic_3 = Mechanic.create!(name: "Tom", years_experience: 22)
       end
 
       it 'i see a header saying all mechanics' do
