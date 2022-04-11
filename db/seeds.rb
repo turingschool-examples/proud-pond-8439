@@ -1,3 +1,4 @@
+# MechanicRide.destroy_all
 AmusementPark.destroy_all
 Ride.destroy_all
 Mechanic.destroy_all
