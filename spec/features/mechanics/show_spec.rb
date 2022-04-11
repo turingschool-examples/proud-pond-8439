@@ -44,7 +44,6 @@ RSpec.describe "mechanic show page" do
     fill_in "Ride", with: "#{@ride_4.id}"
     click_on "Submit"
     expect(current_path).to eq("/mechanics/#{@mech_1.id}")
-    save_and_open_page
     expect(page).to have_content("Barb's Ride")
   end
 end
