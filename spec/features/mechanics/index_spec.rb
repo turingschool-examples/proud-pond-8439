@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe index, type: :feature do
+RSpec.describe "mechanic index page", type: 'feature' do
 
   before :each do
     @adam = Mechanic.create(name: "Adam", years_experience: 9)
@@ -9,9 +9,11 @@ RSpec.describe index, type: :feature do
   end
 
   it 'possesses attributes for all mechanics' do
-    visit '/mechanics/'
+    visit "/mechanics"
 
-    within('#mechanics') do
+    expect(page).to have_content("All Mechanics")
+
+    within('#all-mechanics') do
       expect(page).to have_content(@adam.name)
       expect(page).to have_content(@brenda.name)
       expect(page).to have_content(@carl.name)
