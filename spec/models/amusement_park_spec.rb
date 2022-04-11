@@ -20,5 +20,9 @@ RSpec.describe AmusementPark do
     it "returns names of all rides in alphabetical order" do
       expect(@six_flags.all_park_rides).to eq([@ferris_wheel, @hurler, @scrambler])
     end
+
+    it "finds average thrill rating of all rides" do
+      expect(@six_flags.avg_thrill_rating).to eq(6)
+    end
   end
 end
