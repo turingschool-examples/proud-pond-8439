@@ -53,4 +53,9 @@ describe 'Mechanics show page' do
     expect(page).not_to have_content("Glove Ferris Wheel")
     expect(page).not_to have_content("Glovinator")
   end
+
+  it 'displays rides in alphabetical order' do
+    expect("Actual Log Cabin").to appear_before("Lincoln Log Slide")
+    expect("Lincoln Log Slide").to appear_before("Space Log Roller Coaster")
+  end
 end
