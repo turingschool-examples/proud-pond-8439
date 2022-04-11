@@ -17,12 +17,13 @@ RSpec.describe 'mechanics show page', type: :feature do
     tower = john.rides.create!(name: 'Tower', thrill_rating: 1, open: true, amusement_park_id: six_flags.id)
     bungee = john.rides.create!(name: 'Bungee', thrill_rating: 5, open: false, amusement_park_id: six_flags.id)
     visit "/mechanics/#{john.id}"
-    expecte(page).to have_content("John")
-    expecte(page).to have_content("5")
+    expect(page).to have_content("John")
+    expect(page).to have_content("5")
     #  order
-    expecte(page).to have_content("Coaster")
-    expecte(page).to have_content("Tower")
-    expecte(page).to have_content("Water Slide")
+    expect(page).to have_content("Coaster")
+    expect(page).to have_content("Tower")
+    expect(page).to have_content("Water Slide")
+    expect(page).to_not have_content("Bungee")
   end
 
 end
