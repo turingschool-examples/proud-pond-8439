@@ -36,8 +36,8 @@ RSpec.describe 'mechanics show page' do
   it 'shows rides in descending order of thrill rating' do
     visit "/mechanics/#{@mechanic1.id}"
 
-    expect(@ride2.name).to appear_before(@ride4.name)
-    expect(@ride4.name).to appear_before(@ride1.name)
+    expect(@ride2.name).to appear_before(@ride5.name)
+    expect(@ride5.name).to appear_before(@ride1.name)
     expect(@ride1.name).not_to appear_before(@ride2.name)
   end
 end

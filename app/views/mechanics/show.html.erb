@@ -1,0 +1,7 @@
+<h1><%= @mechanic.name %></h1>
+
+<% @mechanic.order_by_thrill.each do |ride| %>
+<% if ride.open %>
+<p><%=ride.name%></p>
+<% end %>
+<% end %>
