@@ -50,7 +50,7 @@ RSpec.describe 'mechanics show page' do
 
         visit "/mechanics/#{mechanic_1.id}"
 
-        expect(page).to have_content("Add a ride to workload:")
+        expect(page).to have_content("Add a ride to workload")
       end
 
       it 'when i fill in that field with an id of an existing ride and hit submit,
@@ -66,7 +66,9 @@ RSpec.describe 'mechanics show page' do
 
         expect(page).not_to have_content(ride_3.name)
 
-        fill_in "Add a ride to workload:", with: "#{ride_3.id}"
+        fill_in "Add a ride to workload", with: "#{ride_3.id}"
+
+        click_on 'Save'
 
         expect(current_path).to eq("/mechanics/#{mechanic_1.id}")
 
