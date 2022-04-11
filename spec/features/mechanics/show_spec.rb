@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'mechanic index page', type: :feature do 
+RSpec.describe 'mechanic show page', type: :feature do 
 
 	before :each do 
 		@kim = Mechanic.create!(name: 'Kim', years_experience: 10)
@@ -50,7 +50,4 @@ RSpec.describe 'mechanic index page', type: :feature do
 			expect('Spinning Cups').to appear_before('The Scrambler')
 		end
 	end
-
-
-
 end
