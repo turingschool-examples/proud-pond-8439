@@ -49,6 +49,7 @@ RSpec.describe "Mechanics Index Page" do
     @chad1 = MechanicRide.create!(ride: @jaws, mechanic: @chad)
     @chad2 = MechanicRide.create!(ride: @hurler, mechanic: @chad)
     @chad3 = MechanicRide.create!(ride: @eraser, mechanic: @chad)
+    require "pry"; binding.pry
   end
 
 

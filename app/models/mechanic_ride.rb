@@ -1,6 +1,6 @@
 class MechanicRide < ApplicationRecord
 
-  has_many :mechanics
-  has_many :rides
+  belongs_to :ride
+  belongs_to :mechanic
 
 end
