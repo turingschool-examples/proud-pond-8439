@@ -3,7 +3,7 @@ class Mechanic < ApplicationRecord
   has_many :rides, through: :ride_mechanics
 
   def self.average_years_experience
-    average(:years_experience).to_f.round(2)
+    average(:years_experience).to_f
   end
 
   def open_rides_by_thrill_rating

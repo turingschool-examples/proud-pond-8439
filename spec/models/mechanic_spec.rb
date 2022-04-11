@@ -13,7 +13,7 @@ RSpec.describe Mechanic do
         mechanic_2 = Mechanic.create!(name: "Ian", years_experience: 19)
         mechanic_3 = Mechanic.create!(name: "Tom", years_experience: 22)
 
-        expect(Mechanic.average_years_experience).to eq(20.33)
+        expect(Mechanic.average_years_experience).to eq(20.333333333333332)
       end
     end
   end
