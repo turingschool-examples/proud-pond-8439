@@ -1,6 +1,6 @@
 class MechanicsController < ApplicationController
 
   def index
-    @mechanic = Mechanic.all
+    @mechanics = Mechanic.all
   end
 end
