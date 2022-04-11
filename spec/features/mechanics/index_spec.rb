@@ -47,7 +47,7 @@ RSpec.describe "Mechanics Index Page" do
       visit "/mechanics"
 
       expect(page).to have_content("All Mechanics")
-
+      save_and_open_page
       within "#mechanic-#{@bob.id}" do
         expect(page).to have_content("Name: bob")
         expect(page).to have_content("Experience: 15")
