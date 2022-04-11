@@ -22,10 +22,7 @@ RSpec.describe 'mechanic index page', type: :feature do
 		expect(page).to have_content(3)
 		expect(page).to have_content(10)
 		expect(page).to have_content(2)
-		
 	end
-
-
 
 	it 'shows the everage years of experience of all mechanics' do 
 		visit 'mechanics'
