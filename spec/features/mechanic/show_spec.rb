@@ -10,7 +10,7 @@ RSpec.describe 'the mechanic show page' do
     ride2 = amusementpark1.rides.create!(name: "Masters of Death", thrill_rating: 9, open: false)
     ride3 = amusementpark1.rides.create!(name: "Shogun Assassin", thrill_rating: 6,   open: true)
     mechanic4 = Mechanic.create!(name: "Tomisaburo Wakayama", years_experience: 333)
-    ride_mechanic1 = RideMechanic.create!(ride_id: ride1.id, mechanic_id: mechanic_4.id)
+    ride_mechanic1 = RideMechanic.create!(ride_id: ride1.id, mechanic_id: mechanic4.id)
 
     visit "/mechanics/#{mechanic4.id}"
 
