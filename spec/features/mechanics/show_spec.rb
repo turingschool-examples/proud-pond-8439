@@ -22,6 +22,7 @@ describe 'Merchants Show Page' , type: :feature do
       visit "/mechanics/#{@mechanic2.id}"
 
       within "#mechanic-#{@mechanic2.id}" do
+        save_and_open_page
         expect(page).to have_content(@mechanic2.name)
         expect(page).to have_content(@mechanic2.years_of_experience)
         expect(page).to_not have_content(@mechanic3.name)
