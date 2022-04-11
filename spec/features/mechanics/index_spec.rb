@@ -43,7 +43,7 @@ RSpec.describe 'the merchant index page' do
 
   it 'shows the average years of experience for all mechanics' do
     visit '/mechanics'
-    
+
     within '#header' do
       expect(page).to have_content('Average Years of Experience:')
       expect(page).to have_content(5)
