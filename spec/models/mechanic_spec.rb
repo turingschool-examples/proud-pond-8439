@@ -5,8 +5,8 @@ RSpec.describe Mechanic do
     @six_flags = AmusementPark.create!(name: 'Six Flags', admission_cost: 75)
     @universal = AmusementPark.create!(name: 'Universal Studios', admission_cost: 80)
 
-    @hurler = @six_flags.rides.create!(name: 'The Hurler', thrill_rating: 7, open: true)
-    @scrambler = @six_flags.rides.create!(name: 'The Scrambler', thrill_rating: 4, open: true)
+    @hurler = @six_flags.rides.create!(name: 'The Hurler', thrill_rating: 4, open: true)
+    @scrambler = @six_flags.rides.create!(name: 'The Scrambler', thrill_rating: 7, open: true)
     @ferris_wheel = @six_flags.rides.create!(name: 'Ferris Wheel', thrill_rating: 7, open: false)
 
     @jaws = @universal.rides.create!(name: 'Jaws', thrill_rating: 5, open: true)
@@ -18,7 +18,7 @@ RSpec.describe Mechanic do
     @hurler.mechanics << @mech_1
     @scrambler.mechanics << @mech_1
     @ferris_wheel.mechanics << @mech_1
-    
+
     @hurler.mechanics << @mech_2
     @scrambler.mechanics << @mech_2
   end
@@ -35,8 +35,8 @@ RSpec.describe Mechanic do
   end
 
   describe "instance methods" do
-    it "finds all open rides a mechanic is working on" do
-      expect(@mech_1.all_rides).to eq([@hurler, @scrambler])
+    it "finds all open rides a mechanic is working on in descending order by thrill_rating" do
+      expect(@mech_1.all_open_rides).to eq([@scrambler, @hurler])
     end
   end
 
