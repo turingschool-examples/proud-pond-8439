@@ -18,5 +18,16 @@ RSpec.describe "Amusement Park show page" do
       expect(page).to have_content("Six Flags")
       expect(page).to have_content("$75.00")
     end
+
+    it "lists the rides in alpha order" do
+      visit "/amusement_parks/#{@six_flags.id}"
+
+      within('#rides') do
+        expect("Carousel").to appear_before("Ferris Wheel")
+        expect("Ferris Wheel").to appear_before("Mine Shaft")
+        expect("Mine Shaft").to appear_before("The Hurler")
+        expect("The Hurler").to appear_before("The Scrambler")
+      end
+    end
   end
 end
