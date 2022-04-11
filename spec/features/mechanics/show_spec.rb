@@ -72,9 +72,8 @@ RSpec.describe "Mechanic Show Page" do
     end
 
     it 'i see a form to add a ride, when i do that ride is added to the list' do
-
+      #happy path
       visit "mechanics/#{@chad.id}"
-      save_and_open_page
 
       expect(page).to have_content("Add Ride to Workload:")
 
@@ -90,13 +89,19 @@ RSpec.describe "Mechanic Show Page" do
         expect(page).to have_content("Name: Tee Cups")
         expect(page).to have_content("Thrill Rating: 9")
       end
+    end
 
+    it 'i see an error message if i enter a non valid id' do
+      #happy path
+      visit "mechanics/#{@chad.id}"
+      fill_in "Ride id number", with: "99999"
+      click_on "Submit"
 
+      expect(current_path).to eq("/mechanics/#{@chad.id}")
+      expect(page).to have_content("Error, no ride found")
 
 
     end
-
-
 
 
   end
