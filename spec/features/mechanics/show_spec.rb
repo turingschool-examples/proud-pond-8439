@@ -9,6 +9,7 @@ RSpec.describe 'Mechanics show page' do
     @ride_1 = @park.rides.create!(name: 'The Twister', thrill_rating: 8, open: true)
     @ride_2 = @park.rides.create!(name: 'The Twister 2', thrill_rating: 10, open: false)
     @ride_3 = @park.rides.create!(name: 'Mind Eraser', thrill_rating: 12, open: true)
+    @ride_4 = @park.rides.create!(name: 'Boomerang', thrill_rating: 7, open: true)
 
     MechanicRide.create!(mechanic_id: @mechanic_1.id, ride_id: @ride_1.id)
     MechanicRide.create!(mechanic_id: @mechanic_1.id, ride_id: @ride_2.id)
@@ -30,5 +31,17 @@ RSpec.describe 'Mechanics show page' do
 
   it 'rides are shown in descending order by thrill rating' do
     expect('Mind Eraser').to appear_before('The Twister')
+  end
+
+  it 'has a form to add a ride' do
+    expect(page).to_not have_content('Name: Boomerang')
+    expect(page).to_not have_content('Thrill rating: 7')
+
+    fill_in :ride_id, with: @ride_4.id
+    click_button 'Submit'
+
+    expect(current_path).to eq("/mechanics/#{@mechanic_1.id}")
+    expect(page).to have_content('Ride: Boomerang')
+    expect(page).to have_content('Thrill rating: 7')
   end
 end
