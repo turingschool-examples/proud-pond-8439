@@ -1,0 +1,7 @@
+<h1>All Mechanics</h1>
+
+<% @mechanics.each_with_index do |mechanic, index| %>
+	<h4>Mechanic No. <%= index + 1 %></h4>
+	<p><%= mechanic.name %></p>
+	<p><%= mechanic.years_experience %></p>
+<% end %>
