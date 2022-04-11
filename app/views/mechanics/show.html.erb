@@ -1,10 +1,10 @@
 <h1><%= @mechanic.name %></h1>
 <p><%= @mechanic.years_experience %></p>
-<p>Working on:</p>
+<p>Working on:</p><div id='rides'>
 <% @rides.each do |ride| %>
   <% if ride.open == true %>
     <p><%= ride.name %></p><br><br>
-  <% end %>
+  <% end %></div>
 <% end %>
 <h3>Add a ride to workload:</h3>
 <%= form_with url: "/mechanics/#{@mechanic.id}", local: true do |f| %>

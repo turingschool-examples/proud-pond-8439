@@ -34,15 +34,19 @@ RSpec.describe "Mechanics show page" do
     it "displays rides they are working on" do
       visit "/mechanics/#{@kara.id}"
 
-      expect(page).to have_content("The Hurler")
-      expect(page).to have_content("The Scrambler")
+      within('#ride') do
+        expect(page).to have_content("The Hurler")
+        expect(page).to have_content("The Scrambler")
+      end
     end
 
     it "displays only open rides" do
       visit "/mechanics/#{@kara.id}"
 
-      expect(page).to have_content("The Hurler")
-      expect(page).to_not have_content("Ferris Wheel")
+      within('#ride') do
+        expect(page).to have_content("The Hurler")
+        expect(page).to_not have_content("Ferris Wheel")
+      end
     end
 
     it "displays rides in thrill descending order" do
