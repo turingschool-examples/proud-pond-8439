@@ -37,11 +37,11 @@ describe 'Mechanics show page' do
       open: true
     )
 
-    RideMechanic.create(mechanic_id: @mech_1.id, ride_id:@ride_1)
-    RideMechanic.create(mechanic_id: @mech_1.id, ride_id:@ride_2)
-    RideMechanic.create(mechanic_id: @mech_1.id, ride_id:@ride_3)
+    RideMechanic.create!(mechanic_id: @mech_1.id, ride_id:@ride_1.id)
+    RideMechanic.create!(mechanic_id: @mech_1.id, ride_id:@ride_2.id)
+    RideMechanic.create!(mechanic_id: @mech_1.id, ride_id:@ride_3.id)
 
-    RideMechanic.create(mechanic_id: @mech_2.id, ride_id:@ride_4)
+    RideMechanic.create!(mechanic_id: @mech_2.id, ride_id:@ride_4.id)
 
     visit "/mechanics/#{@mech_1.id}"
   end

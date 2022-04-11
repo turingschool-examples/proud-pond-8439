@@ -1,3 +1,9 @@
 <h1> <%= @mechanic.name %> </h1>
 
 <h4> Years of Experience: <%= @mechanic.years_experience %> </h4><hr/>
+<div id="rides">
+  <% @mechanic.ride.each do |ride| %>
+    <h2><%= ride.name %></h2>
+    <hr/>
+  <% end %>
+</div>
