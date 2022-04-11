@@ -7,7 +7,7 @@ RSpec.describe "mechanic show page" do
     @ride_1 = Ride.create!(name: "Swings", thrill_rating: 1, open: true, amusement_park_id: @park.id)
     @ride_2 = Ride.create!(name: "Colossus", thrill_rating: 5, open: true, amusement_park_id: @park.id)
     @ride_3 = Ride.create!(name: "X2", thrill_rating: 5, open: false, amusement_park_id: @park.id)
-    @ride_4 = Ride.create!(name: "Barb's Ride", thrill_rating: 5, open: false, amusement_park_id: @park.id)
+    @ride_4 = Ride.create!(name: "Barb's Ride", thrill_rating: 5, open: true, amusement_park_id: @park.id)
 
     @mech_1 = Mechanic.create!(name: "Jimmy", years_experience: 1)
     @mech_2 = Mechanic.create!(name: "Barb", years_experience: 2)
@@ -41,9 +41,10 @@ RSpec.describe "mechanic show page" do
   
   it "has a form to add a ride to their workload" do
     expect(page).to_not have_content("Barb's Ride")
-    fill_in "Ride id", with: "#{@ride_4.id}"
+    fill_in "Ride", with: "#{@ride_4.id}"
     click_on "Submit"
     expect(current_path).to eq("/mechanics/#{@mech_1.id}")
+    save_and_open_page
     expect(page).to have_content("Barb's Ride")
   end
 end
