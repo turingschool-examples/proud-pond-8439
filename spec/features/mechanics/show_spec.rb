@@ -40,4 +40,15 @@ RSpec.describe "Mechanics show" do
     expect(page).to_not have_content("Ferris Wheel")
     expect(page).to_not have_content("Jaws")
   end
+
+  it "has a form to add a ride to their workload" do
+    visit "/mechanics/#{@mech_1.id}"
+    expect(page).to_not have_content("Jaws")
+
+    fill_in 'Ride Id', with: "#{@jaws.id}"
+    click_button 'Submit'
+
+    expect(current_path).to eq("/mechanics/#{@mech_1.id}")
+    expect(page).to have_content("Jaws")
+  end
 end
