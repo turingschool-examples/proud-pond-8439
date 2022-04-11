@@ -9,5 +9,6 @@ RSpec.describe Ride do
   describe  'validations'
     it {should validate_presence_of(:name) }
     it {should validate_presence_of(:thrill_rating) }
-    it {should validate_presence_of(:open) }
+    it {should allow_value(true).for(:open) }
+    it {should allow_value(false).for(:open) }
 end
