@@ -24,7 +24,6 @@ describe 'Merchants index' , type: :feature do
     end
 
     it 'lists all mechanics and their years of expereince' do
-      save_and_open_page
       within "#mechanic-#{@mechanic2.id}" do
         expect(page).to have_content(@mechanic2.name)
         expect(page).to have_content(@mechanic2.years_of_experience)
@@ -39,6 +38,11 @@ describe 'Merchants index' , type: :feature do
         expect(page).to have_content(@mechanic3.name)
         expect(page).to have_content(@mechanic3.years_of_experience)
       end
+    end
+
+    it 'shows average expereince of all mechanics' do
+      save_and_open_page
+      expect(page).to have_content("Average Experience of All Mechanics: 8.33")
     end
   end
 end
