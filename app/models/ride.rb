@@ -9,4 +9,9 @@ class Ride < ApplicationRecord
     order(:name)
   end
 
+  def self.avg_thrill
+    average(:thrill_rating)
+    # require "pry"; binding.pry
+  end
+
 end

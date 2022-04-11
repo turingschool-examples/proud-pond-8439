@@ -37,8 +37,9 @@ RSpec.describe 'amusement park show page' do
 
   it 'lists the average thrill rating of the parks rides' do
     visit "/amusement_parks/#{@park.id}"
+    save_and_open_page
 
-    expect(page).to have_content("Average Thrill Rating: 7.3")
-    expect(page).not_to have_content("Average Thrill Rating: 7.3333")
+    expect(page).to have_content("Average Thrill Rating: 7.3/10")
+    expect(page).not_to have_content("Average Thrill Rating: 7.3333/10")
   end
 end
