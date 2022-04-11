@@ -8,4 +8,8 @@ class Ride < ApplicationRecord
   def self.order_by_name
     order(:name)
   end
+
+  def self.average_thrill
+    average(:thrill_rating)
+  end
 end
