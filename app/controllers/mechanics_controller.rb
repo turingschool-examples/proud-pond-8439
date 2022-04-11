@@ -9,4 +9,11 @@ class MechanicsController < ApplicationController
     @rides = @mechanic.rides.descending_thrill.where(open: :true)
   end
 
+  def update
+    target_mechanic = Mechanic.find(params[:id])
+    target_ride = Ride.find(params[:ride_id])
+    target_mechanic.rides << target_ride
+    redirect_to "/mechanics/#{params[:id]}"
+  end
+
 end

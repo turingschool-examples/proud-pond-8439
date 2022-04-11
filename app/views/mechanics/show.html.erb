@@ -2,4 +2,10 @@
 <ul>
   <li>Name: <%= @mechanic.name %></li>
   <li>Years Experience: <%= @mechanic.years_experience %></li>
-  <li>Currently Working On: <% @rides.each_with_index do |ride, i| %><% if ride.open %><div id="mechanic_show_rides_<%= i %>"><%= ride.name %></div><% end %><% end %></li>
+  <li>Currently Working On: <% @rides.each_with_index do |ride, i| %><% if ride.open %><div id="mechanic_show_rides_<%= i %>"><%= ride.name %></div> <% end %><% end %></li>
+</ul>
+<%= form_with url: "/mechanics/#{@mechanic.id}", method: :patch, local: true do |f| %>
+  <%= f.label :ride_id %>
+  <%= f.text_field :ride_id %>
+  <%= f.submit :add_ride %>
+<% end %>
