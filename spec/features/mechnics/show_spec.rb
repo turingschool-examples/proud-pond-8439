@@ -22,17 +22,25 @@ RSpec.describe 'mechanics show' do
     hurler = six_flags.rides.create!(name: 'The Hurler', thrill_rating: 7, open: true)
     scrambler = six_flags.rides.create!(name: 'The Scrambler', thrill_rating: 10, open: true)
     ferris = six_flags.rides.create!(name: 'Ferris Wheel', thrill_rating: 7, open: false)
+    gravitron = six_flags.rides.create!(name: 'Gravitron', thrill_rating: 3, open: true)
+
     MechanicRide.create!(mechanic_id: "#{@mechanic_1.id}", ride_id: "#{hurler.id}")
     MechanicRide.create!(mechanic_id: "#{@mechanic_1.id}", ride_id: "#{scrambler.id}")
     MechanicRide.create!(mechanic_id: "#{@mechanic_1.id}", ride_id: "#{ferris.id}")
+    MechanicRide.create!(mechanic_id: "#{@mechanic_1.id}", ride_id: "#{gravitron.id}")
+
 
     visit "/mechanics/#{@mechanic_1.id}"
-    
+
     expect(page).to have_content("The Hurler")
     expect(page).to have_content("The Scrambler")
+    expect(page).to have_content("Gravitron")
+
     expect(page).to have_no_content("Ferris Wheel")
 
     expect("The Scrambler").to appear_before("The Hurler")
+    expect("The Hurler").to appear_before("Gravitron")
+
   end
 
   it 'has a form to add a new ride' do
