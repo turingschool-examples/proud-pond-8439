@@ -46,11 +46,12 @@ RSpec.describe 'the mechanics show' do
     ridemech3 = RideMechanic.create!(ride_id: ride3.id, mechanic_id: mechanic1.id)
 
     visit "/mechanics/#{mechanic1.id}"
-    #save_and_open_page
+    
 
     expect(find('form')).to have_content('Ride')
     fill_in 'Ride', with: ride4.id
     click_button 'Submit'
+    save_and_open_page
     expect(page).to have_current_path("/mechanics/#{mechanic1.id}")
     expect(page).to have_content('Ride 4')
   end

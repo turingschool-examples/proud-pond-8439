@@ -8,9 +8,11 @@
 <p>Thrill Rating: <%= ride.thrill_rating %></p>
 <% end %>
 
+<h3> Add ride to mechanic </h3>
 <%= form_with url: '/ride_mechanics', method: :post, local: true do |f| %>
   <%= f.label :ride_id %>
   <%= f.text_field :ride_id %>
+  <%= f.hidden_field :mechanic_id, :value => @mechanic.id %>
 
   <%= f.submit "Submit" %>
 <% end %>
