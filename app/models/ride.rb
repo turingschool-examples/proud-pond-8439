@@ -4,4 +4,7 @@ class Ride < ApplicationRecord
   validates :open, inclusion: [true, false]
 
   belongs_to :amusement_park
+
+  has_many :mechanics_rides
+  has_many :mechanics, through: :mechanics_rides
 end
