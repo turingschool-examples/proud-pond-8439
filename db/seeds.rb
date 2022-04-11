@@ -9,3 +9,7 @@ hurler = six_flags.rides.create!(name: 'The Scrambler', thrill_rating: 4, open: 
 hurler = six_flags.rides.create!(name: 'Ferris Wheel', thrill_rating: 7, open: false)
 
 jaws = universal.rides.create!(name: 'Jaws', thrill_rating: 5, open: true)
+
+mech_1 = Mechanic.create!(name: "Billy Bighammer", years_experience: 50)
+mech_2 = Mechanic.create!(name: "Linda Licehead", years_experience: 8)
+mech_3 = Mechanic.create!(name: "Rhonda Roundhouse", years_experience: 19)
