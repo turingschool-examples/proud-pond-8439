@@ -68,7 +68,7 @@ RSpec.describe 'mechanics show page' do
 
         fill_in "Add a ride to workload", with: "#{ride_3.id}"
 
-        click_on 'Save'
+        click_on 'Submit'
 
         expect(current_path).to eq("/mechanics/#{mechanic_1.id}")
 

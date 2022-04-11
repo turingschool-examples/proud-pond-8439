@@ -8,5 +8,5 @@
 <%= form_with url: "/ride_mechanics?id=#{@mechanic.id}", method: :post, local: true do |form| %>
   <%= form.label :add_a_ride_to_workload %>
   <%= form.number_field :add_a_ride_to_workload %>
-  <%= form.submit %>
+  <%= form.submit "Submit" %>
 <% end %>
