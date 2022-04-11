@@ -9,8 +9,10 @@
 <br>
 
 <h3>Add a Ride to Workload: </h3>
-<%= form_with url: "/ridemechanics/new", method: :post, params: {:ride_id => ride.id, :mechanic_id => @mechanic.id}, method: :get, local: true do |f| %>
-<%= f.label :query, "ride id" %>
-<%= f.text_field :query, ride_id: :ride_id %>
-<%= f.submit "Submit"  %><br>
+
+<%= form_with url: "/ridemechanics/new", method: :post, local: true do |f| %>
+<%= f.label :ride_id %>
+<%= f.text_field :ride_id %>
+<%= f.hidden_field :id, value: @mechanic.id %>
+<%= f.submit 'Submit'%><br>
 <% end  %>

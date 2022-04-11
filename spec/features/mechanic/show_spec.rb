@@ -36,10 +36,10 @@ RSpec.describe 'the mechanic show page' do
 
     visit "/mechanics/#{mechanic4.id}"
 
-    fill_in('ride id', with: "#{ride3.id}")
+    fill_in('Ride', with: "#{ride3.id}")
 
     click_button 'Submit'
-save_and_open_page
+
     expect(page).to have_content(ride1.name)
     expect(page).to have_content(ride2.name)
     expect(page).to have_content(ride3.name)
