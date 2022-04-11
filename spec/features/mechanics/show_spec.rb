@@ -40,9 +40,9 @@ RSpec.describe "Mechanic Show Page" do
     @chad3 = MechanicRide.create!(ride: @eraser, mechanic: @chad)
   end
 
-  describe 'As a visitor' do
+  describe 'As a visitor, I see the mechanics attributes' do
 
-    it 'i see a mechanics attributes, names of rides they are working on (only if they are open), ordered by thrill rating' do
+    it 'I also see the names of open rides they are working on, ordered by thrill rating (DESC)' do
 
       visit "/mechanics/#{@skeeter.id}"
       # save_and_open_page
@@ -71,19 +71,18 @@ RSpec.describe "Mechanic Show Page" do
 
     end
 
-    it 'i see a form to add a ride, when i do that ride is added to the list' do
+    it 'I see a form to add a ride, when I add a valid ride id I see it added to the list' do
       #happy path
       visit "mechanics/#{@chad.id}"
-
+      # save_and_open_page
       expect(page).to have_content("Add Ride to Workload:")
-
-
 
       fill_in "Ride id number", with: "#{@cups.id}"
       click_on "Submit"
 
       expect(current_path).to eq("/mechanics/#{@chad.id}")
 
+      # save_and_open_page
       within "#rides-#{@cups.id}" do
         expect(page).to_not have_content("#{@eraser.name}")
         expect(page).to have_content("Name: Tee Cups")
@@ -91,24 +90,16 @@ RSpec.describe "Mechanic Show Page" do
       end
     end
 
-    it 'i see an error message if i enter a non valid id' do
+    it 'I see an error message if I enter a non-valid ride id' do
       #sad path
       visit "mechanics/#{@chad.id}"
       fill_in "Ride id number", with: "999"
       click_on "Submit"
+      # save_and_open_page
 
       expect(current_path).to eq("/mechanics/#{@chad.id}")
       expect(page).to have_content("Error, no ride found")
 
-      save_and_open_page
     end
-
-
   end
-
-
-
-
-
-
 end

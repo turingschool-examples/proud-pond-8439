@@ -15,12 +15,13 @@ class MechanicsController < ApplicationController
 
     if Ride.all.ids.include?(ride_id)
       ride = Ride.find(ride_id)
-      mech = Mechanic.find(mech_id)
+      @mechanic = Mechanic.find(mech_id)
 
-      new_mech_ride = MechanicRide.create!(ride: ride, mechanic: mech)
+      new_mech_ride = MechanicRide.create!(ride: ride, mechanic: @mechanic)
 
       new_mech_ride.save
-        redirect_to "/mechanics/#{mech_id}"
+      @mechanic.save
+      redirect_to "/mechanics/#{@mechanic.id}"
 
     else
       flash[:notice] = "Error, no ride found"

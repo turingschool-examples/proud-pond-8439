@@ -33,6 +33,11 @@ RSpec.describe Mechanic, type: :model do
       @skeeter2 = MechanicRide.create!(ride: @hurler, mechanic: @skeeter)
       @skeeter3 = MechanicRide.create!(ride: @twister, mechanic: @skeeter)
       @skeeter1 = MechanicRide.create!(ride: @cups, mechanic: @skeeter)
+      @joe1 = MechanicRide.create!(ride: @eraser, mechanic: @joe)
+      @joe2 = MechanicRide.create!(ride: @cups, mechanic: @joe)
+      @joe3 = MechanicRide.create!(ride: @twister, mechanic: @joe)
+      @joe4 = MechanicRide.create!(ride: @wheel, mechanic: @joe)
+
     end
 
     it 'retruns the average experience of all mechanics' do
@@ -41,6 +46,8 @@ RSpec.describe Mechanic, type: :model do
 
     it 'returns a mechanics current rides that are open, by thrill rate DESC' do
       expect(@skeeter.open_rides_desc).to eq([@cups, @hurler, @scrambler])
+      expect(@joe.open_rides_desc).to eq([@cups, @eraser])
+
     end
 
 
