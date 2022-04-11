@@ -7,6 +7,6 @@ class Mechanic < ApplicationRecord
   end
 
   def all_rides
-    rides
+    rides.where(open: true)
   end
 end

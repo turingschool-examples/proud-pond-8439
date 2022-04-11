@@ -17,6 +17,7 @@ RSpec.describe "Mechanics show" do
 
     @hurler.mechanics << @mech_1
     @scrambler.mechanics << @mech_1
+    @ferris_wheel.mechanics << @mech_1
   end
 
   it "displays mechanic name and years of experience" do
@@ -28,7 +29,7 @@ RSpec.describe "Mechanics show" do
     expect(page).to_not have_content("Linda Licehead")
   end
 
-  it "displays names of rides mechanic is working on" do
+  it "displays names of open rides mechanic is working on" do
     visit "/mechanics/#{@mech_1.id}"
 
     expect(page).to have_content("The Hurler")

@@ -17,6 +17,8 @@ RSpec.describe Mechanic do
 
     @hurler.mechanics << @mech_1
     @scrambler.mechanics << @mech_1
+    @ferris_wheel.mechanics << @mech_1
+    
     @hurler.mechanics << @mech_2
     @scrambler.mechanics << @mech_2
   end
@@ -33,7 +35,7 @@ RSpec.describe Mechanic do
   end
 
   describe "instance methods" do
-    it "finds all rides a mechanic is working on" do
+    it "finds all open rides a mechanic is working on" do
       expect(@mech_1.all_rides).to eq([@hurler, @scrambler])
     end
   end
