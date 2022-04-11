@@ -1,5 +1,6 @@
 class MechanicsController < ApplicationController
   def index
     @mechanics = Mechanic.all
+    @average_years_experience = @mechanics.average_years_experience
   end
 end
