@@ -1,10 +1,15 @@
-<h1>Mechanic: <%= @mechanic.name %></h1>
-<p>Years of Experience: <%= @mechanic.years_experience %></p>
-<br>
-<h2>Current Rides: </h2>
-<% @open_rides.each do |ride| %>
-    <p><%= ride.name %></p>
-<% end %>
+<div id="mechanic_info">
+  <h1>Mechanic: <%= @mechanic.name %></h1>
+  <p>Years of Experience: <%= @mechanic.years_experience %></p>
+  <br>
+</div>
+
+<div id="rides">
+  <h2>Current Rides: </h2>
+  <% @open_rides.each do |ride| %>
+  <p><%= ride.name %></p>
+  <% end %>
+</div>
 
 <h1>Add a ride to workload</h1>
 <%= form_with url:"/mechanics/#{@mechanic.id}", local: true, method: :post do |form| %>

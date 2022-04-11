@@ -8,7 +8,6 @@ RSpec.describe 'mechanics index page', type: :feature do
     sally = Mechanic.create!(name: 'Sally', years_experience: 2)
     sam = Mechanic.create!(name: 'Sam', years_experience: 10)
     visit '/mechanics'
-    # update to within if time
     within "#mechanic" do
       expect(page).to have_content("All Mechanics")
     end

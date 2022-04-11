@@ -10,12 +10,15 @@ RSpec.describe 'mechanics show page', type: :feature do
     tower = john.rides.create!(name: 'Tower', thrill_rating: 1, open: true, amusement_park_id: six_flags.id)
     bungee = john.rides.create!(name: 'Bungee', thrill_rating: 5, open: false, amusement_park_id: six_flags.id)
     visit "/mechanics/#{john.id}"
-    expect(page).to have_content("John")
-    expect(page).to have_content("5")
-    expect(page).to have_content("Coaster")
-    expect(page).to have_content("Tower")
-    expect(page).to have_content("Water Slide")
-    expect(page).to_not have_content("Bungee")
+    within "#mechanic_info" do
+      expect(page).to have_content("John")
+      expect(page).to have_content("5")
+    end
+    within "#rides" do
+      expect(page.text.index("Coaster")).to be < page.text.index("Water Slide")
+      expect(page.text.index("Water Slide")).to be < page.text.index("Tower")
+      expect(page).to_not have_content("Bungee")
+    end
   end
 
   it 'allows the user to add a ride to a mechanic' do
