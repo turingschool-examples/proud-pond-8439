@@ -33,5 +33,9 @@ RSpec.describe AmusementPark do
       expect(@amusement_park_1.rides).to eq([@ride_1, @ride_2, @ride_3])
       expect(@amusement_park_1.sort_rides).to eq([@ride_1, @ride_3, @ride_2])
     end
+
+    it 'calculates average thrill rating of all rides' do
+      expect(@amusement_park_1.avg_thrills.to_f).to eq(4.6666666666666667)
+    end
   end
 end

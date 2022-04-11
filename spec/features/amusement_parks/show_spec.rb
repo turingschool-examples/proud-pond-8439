@@ -58,4 +58,8 @@ describe 'Mechanics show page' do
     expect("Actual Log Cabin").to appear_before("Lincoln Log Slide")
     expect("Lincoln Log Slide").to appear_before("Space Log Roller Coaster")
   end
+
+  it "displays the average thrill rating of amusement park's rides" do
+    expect(page).to have_content("Average Thrill Rating: 4.7/10")
+  end
 end
