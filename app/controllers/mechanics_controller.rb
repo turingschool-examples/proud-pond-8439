@@ -8,4 +8,12 @@ class MechanicsController < ApplicationController
     @mechanic = Mechanic.find(params[:id])
     @rides = @mechanic.all_open_rides
   end
+
+  def update
+      @ride = Ride.find(params["Ride Id"])
+      @mechanic = Mechanic.find(params[:id])
+      @mechanic.rides << @ride
+
+      redirect_to "/mechanics/#{@mechanic.id}"
+  end
 end
