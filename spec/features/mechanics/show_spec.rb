@@ -19,7 +19,7 @@ RSpec.describe 'Mechanics Show page' do
   end
 
   it 'displays mechanic attributes and rides they work on' do
-    save_and_open_page
+ #   save_and_open_page
 
     expect(page).to have_content(@john.name)
     expect(page).to have_content("Experience: #{@john.years_experience}")
