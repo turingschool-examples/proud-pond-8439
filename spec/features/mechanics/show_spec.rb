@@ -74,9 +74,27 @@ describe 'Mechanics show page' do
     end
   end
 
-  it 'has a form to add new rides to the mechanincs workload' do
-    within('#work_form') do
-      expect(page).to have_field("Ride ID")
+  describe "form to add rides to mech's workload" do
+    it 'has a form to add new rides to the mechanincs workload' do
+      within('#work_form') do
+        expect(page).to have_field("Ride ID")
+      end
+    end
+    it 'allows you to add a ride to a mechanics workload' do
+      within('#rides') do
+        expect(page).not_to have_content("Kiddy Log Jump")
+      end
+
+      within('#work_form') do
+        fill_in('Ride ID', with: @ride_4.id)
+        click_button("Add this ride to John Mulany's workload")
+
+        expect(current_path).to eq("/mechanics/#{@mech_1.id}")
+      end
+
+      within('#rides') do
+        expect(page).to have_content("Kiddy Log Jump")
+      end
     end
   end
 end
