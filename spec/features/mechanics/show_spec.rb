@@ -45,7 +45,7 @@ RSpec.describe "Mechanic Show Page" do
     it 'i see a mechanics attributes, names of rides they are working on (only if they are open), ordered by thrill rating' do
 
       visit "/mechanics/#{@skeeter.id}"
-
+      save_and_open_page
       expect(page).to have_content("Name: skeeter")
       expect(page).to have_content("Experience: 4")
 

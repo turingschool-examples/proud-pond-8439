@@ -5,7 +5,8 @@ class MechanicsController < ApplicationController
   end
 
   def show
-
+    @mechanic = Mechanic.find(params[:id])
+    # require "pry"; binding.pry
   end
 
 
