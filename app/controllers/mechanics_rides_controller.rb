@@ -2,6 +2,7 @@ class MechanicsRidesController < ApplicationController
 
   def create
     mechride = MechanicsRide.new(mechride_params)
+    
     if mechride.save
       redirect_to "/mechanics/#{mechride.mechanic_id}"
     else
