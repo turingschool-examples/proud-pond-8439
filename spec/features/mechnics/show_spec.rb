@@ -17,7 +17,7 @@ RSpec.describe 'mechanics show' do
     expect(page).to have_no_content("Dolly Jackson")
   end
 
-  it 'displays the names of rides they work on' do
+  xit 'displays the names of rides they work on' do
     six_flags = AmusementPark.create!(name: 'Six Flags', admission_cost: 75)
     hurler = six_flags.rides.create!(name: 'The Hurler', thrill_rating: 7, open: true)
     scrambler = six_flags.rides.create!(name: 'The Scrambler', thrill_rating: 4, open: true)
