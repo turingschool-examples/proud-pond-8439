@@ -2,3 +2,8 @@
 
 <p>Name: <%= @mechanic.name %></p>
 <p>Name: <%= @mechanic.experience%></p>
+
+<% @open_rides.each do |ride| %>
+<p>Ride name: <%= ride.name %></p>
+<p>Thrill Rating: <%= ride.thrill_rating %></p>
+<% end %>
