@@ -15,20 +15,11 @@ RSpec.describe 'mechanics index' do
     end
   end
 
-  it 'displays their name, years_experience, names of rides theyre working on' do
-    six_flags = AmusementPark.create!(name: 'Six Flags', admission_cost: 75)
-    hurler = six_flags.rides.create!(name: 'The Hurler', thrill_rating: 7, open: true)
-    scrambler = six_flags.rides.create!(name: 'The Scrambler', thrill_rating: 4, open: true)
-    ferris = six_flags.rides.create!(name: 'Ferris Wheel', thrill_rating: 7, open: false)
-
-
+  it 'displays their name and years_experience' do
     visit '/mechanics'
     within "#mechanic-#{@mechanic_1.id}" do
       expect(page).to have_content("Joey Simpson")
-      expect(page).to have_content("5")
-      expect(page).to have_content("The Hurler")
-      expect(page).to have_content("The Scrambler")
-      expect(page).to have_no_content("Ferris Wheel")
+      expect(page).to have_content("5")      
     end
   end
 end
