@@ -45,7 +45,7 @@ Once the time for the assessment is up, push your code to your fork and create a
 We are creating an application to track the maintenance of amusement park rides and mechanics working on those rides.
 
 * AmusementParks have a name and price of admissions attributes
-  * ex. name: 'Six Flags', admission_cost: 75 
+  * ex. name: 'Six Flags', admission_cost: 75
 * Mechanics have a name and years of experience attributes
   * ex. name: ‘Kara Smith’, years_experience: 11
 * Rides have a name, thrill rating, and open (boolean) attributes
