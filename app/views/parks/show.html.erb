@@ -1,0 +1,11 @@
+<h1> <%= @park.name %> </h1>
+<h3>Admission: $<%= @park.admission_cost.to_s.ljust(5, ".00") %></h3>
+
+<h3>Rides:<h3>
+<ol>
+<% @park.rides.each do |ride| %>
+  <li><%= ride.name %></li>
+<% end %>
+</ol>
+
+<h3>Average Thrill Rating: <%= @park.average_thrill_rating %>/5 </h3>

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe AmusementPark do
+RSpec.describe "amusement park show page" do
   before do
     @park_1 = AmusementPark.create!(name: "Six Flags", admission_cost: 10)
     @park_2 = AmusementPark.create!(name: "Disneyland", admission_cost: 20)
@@ -19,15 +19,26 @@ RSpec.describe AmusementPark do
     @ride_mech_3 = RideMechanic.create!(ride_id: @ride_3.id, mechanic_id: @mech_1.id)
     @ride_mech_4 = RideMechanic.create!(ride_id: @ride_4.id, mechanic_id: @mech_2.id)
     @ride_mech_5 = RideMechanic.create!(ride_id: @ride_5.id, mechanic_id: @mech_2.id)
+    
+    visit "/parks/#{@park_1.id}"
   end
 
-  describe 'relationships' do
-    it { should have_many(:rides) }
+  it "has the name and price of admission" do
+    expect(page).to have_content("Six Flags")
+    expect(page).to have_content("Admission: $10.00")
+    expect(page).to_not have_content("Disneyland")
+    expect(page).to_not have_content("Admission: $20.00")
   end
 
-  describe "instance methods" do
-    it "#average_thrill_rating" do
-      expect(@park_1.average_thrill_rating).to eq(4)
-    end
+  it "has the names of all rides" do
+    expect(page).to have_content("Swings")
+    expect(page).to have_content("Colossus")
+    expect(page).to have_content("X2")
+    expect(page).to have_content("Barb's Ride")
+    expect(page).to_not have_content("Pirates of the Carribean")
+  end
+
+  it "has the average thrill rating of rides" do
+    expect(page).to have_content("Average Thrill Rating: 4.0/5")
   end
 end
