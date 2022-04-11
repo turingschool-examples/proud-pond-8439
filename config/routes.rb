@@ -4,4 +4,7 @@ Rails.application.routes.draw do
   get '/mechanics/:id', to: 'mechanics#show'
 
   post '/mechanics/:id', to: 'mechanics#create'
+
+  # resources :mechanics, only: [:index, :show, :create]
+
 end
