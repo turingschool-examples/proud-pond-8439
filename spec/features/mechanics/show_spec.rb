@@ -20,13 +20,12 @@ RSpec.describe "Mechanics Show Page", type: :feature do
 
     expect(page).to have_content(mechanic1.name)
     expect(page).to have_content(mechanic1.years_experience)
-    expect(page).to have_content(hurler.name)
-    expect(page).to have_content(scrambler.name)
-    expect(page).to have_content(jaws.name)
+    expect(hurler.name).to appear_before(jaws.name)
+    expect(jaws.name).to appear_before(scrambler.name)
     expect(page).to_not have_content(ferris.name)
   end
 
-  it "has a form to add a ride" do
+  it "has a form to add a ride to mechanics workload" do
     mechanic1 = Mechanic.create!(name: "Kara Smith", years_experience: 11)
 
     six_flags = AmusementPark.create!(name: "Six Flags", admission_cost: 75)
